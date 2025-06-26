@@ -73,7 +73,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.icone_livros;
-            pictureBox2.Location = new Point(45, 97);
+            pictureBox2.Location = new Point(47, 31);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(207, 173);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -92,7 +92,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Italic);
-            label2.Location = new Point(21, 285);
+            label2.Location = new Point(22, 238);
             label2.Name = "label2";
             label2.Size = new Size(145, 28);
             label2.TabIndex = 1;
@@ -102,7 +102,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe Print", 27F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(2, 318);
+            label1.Location = new Point(0, 276);
             label1.Name = "label1";
             label1.Size = new Size(298, 64);
             label1.TabIndex = 0;
@@ -129,13 +129,14 @@
             btnEntrar.FlatStyle = FlatStyle.Flat;
             btnEntrar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             btnEntrar.ForeColor = Color.Black;
-            btnEntrar.Location = new Point(155, 285);
+            btnEntrar.Location = new Point(9, 289);
             btnEntrar.Margin = new Padding(0);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(133, 51);
             btnEntrar.TabIndex = 5;
             btnEntrar.Text = "Entrar";
             btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // caixaSenha
             // 
@@ -163,6 +164,7 @@
             inputSenha.BorderStyle = BorderStyle.None;
             inputSenha.Font = new Font("Segoe UI", 12F);
             inputSenha.Location = new Point(56, 13);
+            inputSenha.MaxLength = 8;
             inputSenha.Name = "inputSenha";
             inputSenha.Size = new Size(360, 22);
             inputSenha.TabIndex = 6;
@@ -215,6 +217,7 @@
             inputLogin.BorderStyle = BorderStyle.None;
             inputLogin.Font = new Font("Segoe UI", 12F);
             inputLogin.Location = new Point(44, 13);
+            inputLogin.MaxLength = 20;
             inputLogin.Name = "inputLogin";
             inputLogin.Size = new Size(372, 22);
             inputLogin.TabIndex = 5;
@@ -248,12 +251,12 @@
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             btnFechar.ForeColor = Color.Black;
-            btnFechar.Location = new Point(394, 0);
+            btnFechar.Location = new Point(169, 289);
             btnFechar.Margin = new Padding(0);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(40, 40);
+            btnFechar.Size = new Size(75, 51);
             btnFechar.TabIndex = 0;
-            btnFechar.Text = "X";
+            btnFechar.Text = "Sair";
             btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFecharApp_Click;
             // 

@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace Livraria
 {
@@ -54,17 +55,16 @@ namespace Livraria
 
             btnEntrar.Enabled = habilitar;
 
-            if (habilitar)
-            {
-                btnEntrar.BackColor = SystemColors.GradientActiveCaption;
-                btnEntrar.ForeColor = Color.Black;
-            }
-            else
+            if (!habilitar)
             {
                 btnEntrar.BackColor = Color.LightGray;
                 btnEntrar.ForeColor = Color.White;
             }
+            else
+            {
+                btnEntrar.BackColor = SystemColors.GradientActiveCaption;
+                btnEntrar.ForeColor = Color.Black;
+            }
         }
-
     }
 }
