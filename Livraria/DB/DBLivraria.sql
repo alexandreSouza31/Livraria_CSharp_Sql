@@ -1,0 +1,36 @@
+-- CRIAR BANCO
+CREATE DATABASE db_livraria;
+
+-- BUSCAR BANCOS EXISTENTES
+SELECT NAME
+FROM MASTER.sys.databases
+ORDER BY NAME DESC;
+
+-- USAR BANCO CRIADO
+USE db_livraria;
+
+-- EXCLUIR BANCO
+DROP DATABASE IF EXISTS db_livraria;
+
+-- EXCLUIR BANCO EM USO
+USE MASTER
+GO
+ALTER DATABASE db_livraria
+SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+DROP DATABASE IF EXISTS db_livraria;
+
+-- CRIAR TABELAS
+CREATE TABLE tbl_atendente
+(
+	cod_Atendente INT PRIMARY KEY IDENTITY,
+	ds_Login VARCHAR(20) NOT NULL,
+	ds_Senha CHAR(8) NOT NULL,
+	nome_atendente VARCHAR(60) NOT NULL
+)
+
+-- INSIRA NA TABELA ATENDENTE NOS CAMPOS
+INSERT INTO tbl_atendente
+(ds_Login,ds_Senha,nome_atendente)
+VALUES('alexandresouza','Ac123','Alexandre Mariano')
+
+SELECT * FROM tbl_atendente

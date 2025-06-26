@@ -18,6 +18,11 @@ namespace Livraria
             inputSenha.UseSystemPasswordChar = true;
         }
 
+        //conexão
+        SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
+        SqlCommand cm = new SqlCommand();
+        SqlDataReader dt;
+
         private void btnFecharApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -64,6 +69,42 @@ namespace Livraria
             {
                 btnEntrar.BackColor = SystemColors.GradientActiveCaption;
                 btnEntrar.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cn.Open();
+                cm.CommandText = "SELECT * FROM tbl_atendente WHERE ds_Login=@login AND ds_Senha=@senha";
+                cm.Parameters.Clear();
+                cm.Parameters.AddWithValue("@login", inputLogin.Text);
+                cm.Parameters.AddWithValue("@senha", inputSenha.Text);
+                cm.Connection = cn;
+                dt = cm.ExecuteReader();
+
+                if (dt.HasRows)
+                {
+                    Menu menu = new Menu();
+                    menu.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Login ou senha inválidos!", "Atenção!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    inputLogin.Clear();
+                    inputSenha.Clear();
+                    inputLogin.Focus();
+                }
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            finally
+            {
+                cn.Close();
             }
         }
     }
