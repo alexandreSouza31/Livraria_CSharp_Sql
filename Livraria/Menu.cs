@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Livraria.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,19 +18,16 @@ namespace Livraria
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnFechar_Click(object sender, EventArgs e)
         {
+            var resultado = DesejaSair.Confirmar();
 
-        }
-
-        private void titulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuLateral_Paint(object sender, PaintEventArgs e)
-        {
-
+            if (resultado == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+            }
         }
     }
 }

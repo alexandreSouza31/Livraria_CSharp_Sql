@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             menuLateral = new Panel();
+            btnFechar = new Button();
             btnCaixa = new Button();
             btnPedido = new Button();
             btnAutor = new Button();
@@ -41,7 +42,6 @@
             containerLogo = new Panel();
             titulo = new Label();
             logo = new PictureBox();
-            btnFechar = new Button();
             menuLateral.SuspendLayout();
             containerLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
@@ -66,7 +66,23 @@
             menuLateral.Name = "menuLateral";
             menuLateral.Size = new Size(220, 654);
             menuLateral.TabIndex = 0;
-            menuLateral.Paint += menuLateral_Paint;
+            // 
+            // btnFechar
+            // 
+            btnFechar.BackColor = SystemColors.GradientActiveCaption;
+            btnFechar.Cursor = Cursors.Hand;
+            btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnFechar.ForeColor = Color.Black;
+            btnFechar.Location = new Point(43, 599);
+            btnFechar.Margin = new Padding(0);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(133, 51);
+            btnFechar.TabIndex = 1;
+            btnFechar.Text = "Sair";
+            btnFechar.UseVisualStyleBackColor = false;
+            btnFechar.Click += btnFechar_Click;
             // 
             // btnCaixa
             // 
@@ -204,7 +220,6 @@
             titulo.Size = new Size(191, 40);
             titulo.TabIndex = 1;
             titulo.Text = "Livraria Online";
-            titulo.Click += titulo_Click;
             // 
             // logo
             // 
@@ -215,23 +230,6 @@
             logo.SizeMode = PictureBoxSizeMode.StretchImage;
             logo.TabIndex = 0;
             logo.TabStop = false;
-            logo.Click += pictureBox1_Click;
-            // 
-            // btnFechar
-            // 
-            btnFechar.BackColor = SystemColors.GradientActiveCaption;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btnFechar.ForeColor = Color.Black;
-            btnFechar.Location = new Point(43, 599);
-            btnFechar.Margin = new Padding(0);
-            btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(133, 51);
-            btnFechar.TabIndex = 1;
-            btnFechar.Text = "Sair";
-            btnFechar.UseVisualStyleBackColor = false;
             // 
             // Menu
             // 

@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Livraria.Utils;
 using Microsoft.Data.SqlClient;
 
 namespace Livraria
@@ -25,7 +26,12 @@ namespace Livraria
 
         private void btnFecharApp_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            var resultado = DesejaSair.Confirmar();
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnSenha_Click(object sender, EventArgs e)
