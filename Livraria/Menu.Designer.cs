@@ -64,7 +64,7 @@
             menuLateral.Dock = DockStyle.Left;
             menuLateral.Location = new Point(0, 0);
             menuLateral.Name = "menuLateral";
-            menuLateral.Size = new Size(220, 654);
+            menuLateral.Size = new Size(220, 595);
             menuLateral.TabIndex = 0;
             // 
             // btnFechar
@@ -86,6 +86,7 @@
             // 
             // btnCaixa
             // 
+            btnCaixa.Cursor = Cursors.Hand;
             btnCaixa.Dock = DockStyle.Top;
             btnCaixa.FlatAppearance.BorderSize = 0;
             btnCaixa.FlatStyle = FlatStyle.Flat;
@@ -99,6 +100,7 @@
             // 
             // btnPedido
             // 
+            btnPedido.Cursor = Cursors.Hand;
             btnPedido.Dock = DockStyle.Top;
             btnPedido.FlatAppearance.BorderSize = 0;
             btnPedido.FlatStyle = FlatStyle.Flat;
@@ -112,6 +114,7 @@
             // 
             // btnAutor
             // 
+            btnAutor.Cursor = Cursors.Hand;
             btnAutor.Dock = DockStyle.Top;
             btnAutor.FlatAppearance.BorderSize = 0;
             btnAutor.FlatStyle = FlatStyle.Flat;
@@ -125,6 +128,7 @@
             // 
             // btnEditora
             // 
+            btnEditora.Cursor = Cursors.Hand;
             btnEditora.Dock = DockStyle.Top;
             btnEditora.FlatAppearance.BorderSize = 0;
             btnEditora.FlatStyle = FlatStyle.Flat;
@@ -138,6 +142,7 @@
             // 
             // btnCategoria
             // 
+            btnCategoria.Cursor = Cursors.Hand;
             btnCategoria.Dock = DockStyle.Top;
             btnCategoria.FlatAppearance.BorderSize = 0;
             btnCategoria.FlatStyle = FlatStyle.Flat;
@@ -151,6 +156,7 @@
             // 
             // btnLivro
             // 
+            btnLivro.Cursor = Cursors.Hand;
             btnLivro.Dock = DockStyle.Top;
             btnLivro.FlatAppearance.BorderSize = 0;
             btnLivro.FlatStyle = FlatStyle.Flat;
@@ -164,6 +170,7 @@
             // 
             // btnTelefone
             // 
+            btnTelefone.Cursor = Cursors.Hand;
             btnTelefone.Dock = DockStyle.Top;
             btnTelefone.FlatAppearance.BorderSize = 0;
             btnTelefone.FlatStyle = FlatStyle.Flat;
@@ -177,6 +184,7 @@
             // 
             // btnCliente
             // 
+            btnCliente.Cursor = Cursors.Hand;
             btnCliente.Dock = DockStyle.Top;
             btnCliente.FlatAppearance.BorderSize = 0;
             btnCliente.FlatStyle = FlatStyle.Flat;
@@ -190,6 +198,7 @@
             // 
             // btnFuncionario
             // 
+            btnFuncionario.Cursor = Cursors.Hand;
             btnFuncionario.Dock = DockStyle.Top;
             btnFuncionario.FlatAppearance.BorderSize = 0;
             btnFuncionario.FlatStyle = FlatStyle.Flat;
@@ -235,7 +244,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1432, 654);
+            ClientSize = new Size(1068, 595);
             Controls.Add(menuLateral);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Menu";
