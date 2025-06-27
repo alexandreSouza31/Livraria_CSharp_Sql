@@ -12,7 +12,6 @@ namespace Livraria
             InitializeComponent();
 
             btnEntrar.Enabled = false;
-            //aplicarCor.AplicarCorDesabilitada(btnEntrar);
             btnSenhaVisivel.Visible = false;
 
             inputSenha.UseSystemPasswordChar = true;
