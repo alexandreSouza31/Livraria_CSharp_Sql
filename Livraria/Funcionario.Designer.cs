@@ -227,6 +227,7 @@
             btnNovo.TabIndex = 14;
             btnNovo.Text = "Novo";
             btnNovo.UseVisualStyleBackColor = false;
+            btnNovo.Click += btnNovo_Click;
             // 
             // btnAlterar
             // 
@@ -272,6 +273,7 @@
             btnCancelar.TabIndex = 17;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnRemover
             // 
@@ -325,7 +327,6 @@
             Controls.Add(labelFuncionario);
             Name = "Funcionario";
             Size = new Size(848, 595);
-            Load += Funcionario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRetornoPesquisa).EndInit();
             groupBoxPesquisarFuncionario.ResumeLayout(false);
             groupBoxPesquisarFuncionario.PerformLayout();

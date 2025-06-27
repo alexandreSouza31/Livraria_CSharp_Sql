@@ -128,7 +128,7 @@
             btnEntrar.FlatAppearance.BorderSize = 0;
             btnEntrar.FlatStyle = FlatStyle.Flat;
             btnEntrar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btnEntrar.ForeColor = Color.Black;
+            btnEntrar.ForeColor = SystemColors.Highlight;
             btnEntrar.Location = new Point(9, 289);
             btnEntrar.Margin = new Padding(0);
             btnEntrar.Name = "btnEntrar";
@@ -153,7 +153,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.ActiveCaptionText;
+            panel4.BackColor = SystemColors.ScrollBar;
             panel4.Location = new Point(44, 41);
             panel4.Name = "panel4";
             panel4.Size = new Size(372, 1);
@@ -206,7 +206,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.ActiveCaptionText;
+            panel5.BackColor = SystemColors.ScrollBar;
             panel5.Location = new Point(44, 41);
             panel5.Name = "panel5";
             panel5.Size = new Size(372, 1);
@@ -236,10 +236,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 27F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.Highlight;
             label3.Location = new Point(169, 35);
             label3.Name = "label3";
-            label3.Size = new Size(105, 48);
+            label3.Size = new Size(112, 47);
             label3.TabIndex = 2;
             label3.Text = "Login";
             // 

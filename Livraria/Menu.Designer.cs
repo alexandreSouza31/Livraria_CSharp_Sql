@@ -43,6 +43,7 @@
             titulo = new Label();
             logo = new PictureBox();
             pictureBox1 = new PictureBox();
+            funcionario1 = new Funcionario();
             menuLateral.SuspendLayout();
             containerLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
@@ -94,6 +95,7 @@
             btnCaixa.FlatAppearance.BorderSize = 0;
             btnCaixa.FlatStyle = FlatStyle.Flat;
             btnCaixa.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCaixa.ForeColor = SystemColors.Highlight;
             btnCaixa.Location = new Point(0, 484);
             btnCaixa.Name = "btnCaixa";
             btnCaixa.Size = new Size(220, 40);
@@ -108,6 +110,7 @@
             btnPedido.FlatAppearance.BorderSize = 0;
             btnPedido.FlatStyle = FlatStyle.Flat;
             btnPedido.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnPedido.ForeColor = SystemColors.Highlight;
             btnPedido.Location = new Point(0, 444);
             btnPedido.Name = "btnPedido";
             btnPedido.Size = new Size(220, 40);
@@ -122,6 +125,7 @@
             btnAutor.FlatAppearance.BorderSize = 0;
             btnAutor.FlatStyle = FlatStyle.Flat;
             btnAutor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnAutor.ForeColor = SystemColors.Highlight;
             btnAutor.Location = new Point(0, 404);
             btnAutor.Name = "btnAutor";
             btnAutor.Size = new Size(220, 40);
@@ -136,6 +140,7 @@
             btnEditora.FlatAppearance.BorderSize = 0;
             btnEditora.FlatStyle = FlatStyle.Flat;
             btnEditora.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnEditora.ForeColor = SystemColors.Highlight;
             btnEditora.Location = new Point(0, 364);
             btnEditora.Name = "btnEditora";
             btnEditora.Size = new Size(220, 40);
@@ -150,6 +155,7 @@
             btnCategoria.FlatAppearance.BorderSize = 0;
             btnCategoria.FlatStyle = FlatStyle.Flat;
             btnCategoria.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCategoria.ForeColor = SystemColors.Highlight;
             btnCategoria.Location = new Point(0, 324);
             btnCategoria.Name = "btnCategoria";
             btnCategoria.Size = new Size(220, 40);
@@ -164,6 +170,7 @@
             btnLivro.FlatAppearance.BorderSize = 0;
             btnLivro.FlatStyle = FlatStyle.Flat;
             btnLivro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnLivro.ForeColor = SystemColors.Highlight;
             btnLivro.Location = new Point(0, 284);
             btnLivro.Name = "btnLivro";
             btnLivro.Size = new Size(220, 40);
@@ -178,6 +185,7 @@
             btnTelefone.FlatAppearance.BorderSize = 0;
             btnTelefone.FlatStyle = FlatStyle.Flat;
             btnTelefone.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnTelefone.ForeColor = SystemColors.Highlight;
             btnTelefone.Location = new Point(0, 244);
             btnTelefone.Name = "btnTelefone";
             btnTelefone.Size = new Size(220, 40);
@@ -192,6 +200,7 @@
             btnCliente.FlatAppearance.BorderSize = 0;
             btnCliente.FlatStyle = FlatStyle.Flat;
             btnCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCliente.ForeColor = SystemColors.Highlight;
             btnCliente.Location = new Point(0, 204);
             btnCliente.Name = "btnCliente";
             btnCliente.Size = new Size(220, 40);
@@ -206,6 +215,7 @@
             btnFuncionario.FlatAppearance.BorderSize = 0;
             btnFuncionario.FlatStyle = FlatStyle.Flat;
             btnFuncionario.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnFuncionario.ForeColor = SystemColors.Highlight;
             btnFuncionario.Location = new Point(0, 164);
             btnFuncionario.Name = "btnFuncionario";
             btnFuncionario.Size = new Size(220, 40);
@@ -253,11 +263,19 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
+            // funcionario1
+            // 
+            funcionario1.Location = new Point(223, 0);
+            funcionario1.Name = "funcionario1";
+            funcionario1.Size = new Size(848, 595);
+            funcionario1.TabIndex = 3;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1068, 595);
+            Controls.Add(funcionario1);
             Controls.Add(pictureBox1);
             Controls.Add(menuLateral);
             FormBorderStyle = FormBorderStyle.None;
@@ -288,5 +306,6 @@
         private Button btnCliente;
         private PictureBox pictureBox1;
         private Button btnSair;
+        private Funcionario funcionario1;
     }
 }

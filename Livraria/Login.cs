@@ -1,5 +1,3 @@
-using System;
-using System.Windows.Forms;
 using Livraria.Utils;
 using Microsoft.Data.SqlClient;
 
@@ -7,13 +5,14 @@ namespace Livraria
 {
     public partial class Login : Form
     {
+
+        AplicarCor aplicarCor = new AplicarCor();
         public Login()
         {
             InitializeComponent();
 
             btnEntrar.Enabled = false;
-            btnEntrar.BackColor = Color.LightGray;
-
+            aplicarCor.AplicarCorDesabilitada(btnEntrar);
             btnSenhaVisivel.Visible = false;
 
             inputSenha.UseSystemPasswordChar = true;
@@ -23,6 +22,12 @@ namespace Livraria
         SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
         SqlCommand cm = new SqlCommand();
         SqlDataReader dt;
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            inputLogin.Focus();
+        }
 
         private void btnSenha_Click(object sender, EventArgs e)
         {
@@ -41,7 +46,6 @@ namespace Livraria
         private void inputLogin_TextChanged(object sender, EventArgs e)
         {
             VerificarCampos();
-            inputLogin.Focus();
         }
 
         private void inputSenha_TextChanged(object sender, EventArgs e)
@@ -57,16 +61,9 @@ namespace Livraria
 
             btnEntrar.Enabled = habilitar;
 
-            if (!habilitar)
-            {
-                btnEntrar.BackColor = Color.LightGray;
-                btnEntrar.ForeColor = Color.White;
-            }
-            else
-            {
-                btnEntrar.BackColor = SystemColors.GradientActiveCaption;
-                btnEntrar.ForeColor = Color.Black;
-            }
+            if (!habilitar) aplicarCor.RestaurarEstiloPersonalizado(Color.Empty, Color.Empty, btnEntrar);
+            else aplicarCor.RestaurarEstiloPersonalizado(Color.Empty, Color.Empty, btnEntrar);
+            
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -115,5 +112,6 @@ namespace Livraria
                 Application.Exit();
             }
         }
+
     }
 }
