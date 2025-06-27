@@ -16,5 +16,10 @@ namespace Livraria
         {
             InitializeComponent();
         }
+
+        private void Funcionario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

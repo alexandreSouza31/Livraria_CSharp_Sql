@@ -57,7 +57,7 @@
             labelFuncionario.AutoSize = true;
             labelFuncionario.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelFuncionario.ForeColor = SystemColors.Highlight;
-            labelFuncionario.Location = new Point(303, 34);
+            labelFuncionario.Location = new Point(303, 35);
             labelFuncionario.Name = "labelFuncionario";
             labelFuncionario.Size = new Size(213, 47);
             labelFuncionario.TabIndex = 0;
@@ -68,7 +68,7 @@
             labelCodigo.AutoSize = true;
             labelCodigo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelCodigo.ForeColor = SystemColors.Desktop;
-            labelCodigo.Location = new Point(115, 145);
+            labelCodigo.Location = new Point(98, 169);
             labelCodigo.Name = "labelCodigo";
             labelCodigo.Size = new Size(74, 25);
             labelCodigo.TabIndex = 1;
@@ -79,7 +79,7 @@
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelLogin.ForeColor = SystemColors.Desktop;
-            labelLogin.Location = new Point(115, 224);
+            labelLogin.Location = new Point(98, 249);
             labelLogin.Name = "labelLogin";
             labelLogin.Size = new Size(61, 25);
             labelLogin.TabIndex = 2;
@@ -90,7 +90,7 @@
             labelNome.AutoSize = true;
             labelNome.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelNome.ForeColor = SystemColors.Desktop;
-            labelNome.Location = new Point(115, 184);
+            labelNome.Location = new Point(98, 209);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(65, 25);
             labelNome.TabIndex = 3;
@@ -100,7 +100,7 @@
             // 
             inputNome.BorderStyle = BorderStyle.None;
             inputNome.Font = new Font("Segoe UI", 14F);
-            inputNome.Location = new Point(195, 183);
+            inputNome.Location = new Point(178, 206);
             inputNome.MaxLength = 60;
             inputNome.Name = "inputNome";
             inputNome.Size = new Size(411, 25);
@@ -110,7 +110,7 @@
             // 
             inputLogin.BorderStyle = BorderStyle.None;
             inputLogin.Font = new Font("Segoe UI", 14F, FontStyle.Underline);
-            inputLogin.Location = new Point(195, 223);
+            inputLogin.Location = new Point(178, 246);
             inputLogin.MaxLength = 20;
             inputLogin.Name = "inputLogin";
             inputLogin.Size = new Size(239, 25);
@@ -120,7 +120,7 @@
             // 
             inputSenha.BorderStyle = BorderStyle.None;
             inputSenha.Font = new Font("Segoe UI", 14F, FontStyle.Underline);
-            inputSenha.Location = new Point(195, 266);
+            inputSenha.Location = new Point(178, 286);
             inputSenha.MaxLength = 8;
             inputSenha.Name = "inputSenha";
             inputSenha.Size = new Size(239, 25);
@@ -131,7 +131,7 @@
             labelSenha.AutoSize = true;
             labelSenha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelSenha.ForeColor = SystemColors.Desktop;
-            labelSenha.Location = new Point(115, 267);
+            labelSenha.Location = new Point(98, 289);
             labelSenha.Name = "labelSenha";
             labelSenha.Size = new Size(65, 25);
             labelSenha.TabIndex = 6;
@@ -143,7 +143,7 @@
             textBox4.BorderStyle = BorderStyle.None;
             textBox4.Font = new Font("Segoe UI", 1F);
             textBox4.ForeColor = SystemColors.ScrollBar;
-            textBox4.Location = new Point(195, 206);
+            textBox4.Location = new Point(178, 229);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(411, 2);
             textBox4.TabIndex = 8;
@@ -154,7 +154,7 @@
             textBox5.BorderStyle = BorderStyle.None;
             textBox5.Font = new Font("Segoe UI", 1F);
             textBox5.ForeColor = SystemColors.ScrollBar;
-            textBox5.Location = new Point(197, 288);
+            textBox5.Location = new Point(178, 310);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(239, 2);
             textBox5.TabIndex = 9;
@@ -165,7 +165,7 @@
             textBox6.BorderStyle = BorderStyle.None;
             textBox6.Font = new Font("Segoe UI", 1F);
             textBox6.ForeColor = SystemColors.ScrollBar;
-            textBox6.Location = new Point(197, 248);
+            textBox6.Location = new Point(178, 271);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(239, 2);
             textBox6.TabIndex = 10;
@@ -173,7 +173,7 @@
             // dgvRetornoPesquisa
             // 
             dgvRetornoPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRetornoPesquisa.Location = new Point(115, 386);
+            dgvRetornoPesquisa.Location = new Point(98, 410);
             dgvRetornoPesquisa.Name = "dgvRetornoPesquisa";
             dgvRetornoPesquisa.Size = new Size(491, 132);
             dgvRetornoPesquisa.TabIndex = 11;
@@ -183,7 +183,7 @@
             groupBoxPesquisarFuncionario.Controls.Add(textBox2);
             groupBoxPesquisarFuncionario.Controls.Add(inputPesquisarFuncionario);
             groupBoxPesquisarFuncionario.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            groupBoxPesquisarFuncionario.Location = new Point(115, 311);
+            groupBoxPesquisarFuncionario.Location = new Point(98, 334);
             groupBoxPesquisarFuncionario.Name = "groupBoxPesquisarFuncionario";
             groupBoxPesquisarFuncionario.Size = new Size(491, 66);
             groupBoxPesquisarFuncionario.TabIndex = 13;
@@ -219,9 +219,9 @@
             btnNovo.FlatStyle = FlatStyle.Flat;
             btnNovo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnNovo.ForeColor = SystemColors.Highlight;
-            btnNovo.Location = new Point(675, 145);
+            btnNovo.Location = new Point(646, 169);
             btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(146, 55);
+            btnNovo.Size = new Size(100, 55);
             btnNovo.TabIndex = 14;
             btnNovo.Text = "Novo";
             btnNovo.UseVisualStyleBackColor = false;
@@ -234,9 +234,9 @@
             btnAlterar.FlatStyle = FlatStyle.Flat;
             btnAlterar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnAlterar.ForeColor = SystemColors.Highlight;
-            btnAlterar.Location = new Point(675, 303);
+            btnAlterar.Location = new Point(646, 327);
             btnAlterar.Name = "btnAlterar";
-            btnAlterar.Size = new Size(146, 55);
+            btnAlterar.Size = new Size(100, 55);
             btnAlterar.TabIndex = 15;
             btnAlterar.Text = "Alterar";
             btnAlterar.UseVisualStyleBackColor = false;
@@ -249,9 +249,9 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnSalvar.ForeColor = SystemColors.Highlight;
-            btnSalvar.Location = new Point(675, 224);
+            btnSalvar.Location = new Point(646, 248);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(146, 55);
+            btnSalvar.Size = new Size(100, 55);
             btnSalvar.TabIndex = 16;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
@@ -264,9 +264,9 @@
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnCancelar.ForeColor = SystemColors.Highlight;
-            btnCancelar.Location = new Point(675, 463);
+            btnCancelar.Location = new Point(646, 487);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(146, 55);
+            btnCancelar.Size = new Size(100, 55);
             btnCancelar.TabIndex = 17;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -279,9 +279,9 @@
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnRemover.ForeColor = SystemColors.Highlight;
-            btnRemover.Location = new Point(675, 384);
+            btnRemover.Location = new Point(646, 408);
             btnRemover.Name = "btnRemover";
-            btnRemover.Size = new Size(146, 55);
+            btnRemover.Size = new Size(100, 55);
             btnRemover.TabIndex = 18;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
@@ -310,6 +310,7 @@
             Controls.Add(labelFuncionario);
             Name = "Funcionario";
             Size = new Size(848, 595);
+            Load += Funcionario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRetornoPesquisa).EndInit();
             groupBoxPesquisarFuncionario.ResumeLayout(false);
             groupBoxPesquisarFuncionario.PerformLayout();

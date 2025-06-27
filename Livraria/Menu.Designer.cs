@@ -42,9 +42,11 @@
             containerLogo = new Panel();
             titulo = new Label();
             logo = new PictureBox();
+            pictureBox1 = new PictureBox();
             menuLateral.SuspendLayout();
             containerLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuLateral
@@ -224,7 +226,7 @@
             // 
             titulo.AutoSize = true;
             titulo.Font = new Font("Segoe Print", 17F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            titulo.Location = new Point(12, 0);
+            titulo.Location = new Point(14, 35);
             titulo.Name = "titulo";
             titulo.Size = new Size(191, 40);
             titulo.TabIndex = 1;
@@ -233,18 +235,30 @@
             // logo
             // 
             logo.Image = Properties.Resources.icone_livros;
-            logo.Location = new Point(22, 41);
+            logo.Location = new Point(71, 78);
             logo.Name = "logo";
-            logo.Size = new Size(172, 115);
+            logo.Size = new Size(72, 72);
             logo.SizeMode = PictureBoxSizeMode.StretchImage;
             logo.TabIndex = 0;
             logo.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.icone_livros;
+            pictureBox1.Location = new Point(220, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(848, 595);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1068, 595);
+            Controls.Add(pictureBox1);
             Controls.Add(menuLateral);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Menu";
@@ -253,6 +267,7 @@
             containerLogo.ResumeLayout(false);
             containerLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -272,5 +287,6 @@
         private Button btnTelefone;
         private Button btnCliente;
         private Button btnFechar;
+        private PictureBox pictureBox1;
     }
 }
