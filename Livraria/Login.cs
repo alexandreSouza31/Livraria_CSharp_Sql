@@ -6,13 +6,13 @@ namespace Livraria
     public partial class Login : Form
     {
 
-        AplicarCor aplicarCor = new AplicarCor();
+        ConfigurarCor aplicarCor = new ConfigurarCor();
         public Login()
         {
             InitializeComponent();
 
             btnEntrar.Enabled = false;
-            aplicarCor.AplicarCorDesabilitada(btnEntrar);
+            //aplicarCor.AplicarCorDesabilitada(btnEntrar);
             btnSenhaVisivel.Visible = false;
 
             inputSenha.UseSystemPasswordChar = true;
@@ -61,9 +61,21 @@ namespace Livraria
 
             btnEntrar.Enabled = habilitar;
 
-            if (!habilitar) aplicarCor.RestaurarEstiloPersonalizado(Color.Empty, Color.Empty, btnEntrar);
-            else aplicarCor.RestaurarEstiloPersonalizado(Color.Empty, Color.Empty, btnEntrar);
-            
+            if (habilitar)
+            {
+                aplicarCor.RestaurarEstiloPersonalizado(
+                    ConfigurarCor.PaletaCores.CorBotaoAtivo,
+                    ConfigurarCor.PaletaCores.CorTextoAtivo,
+                    btnEntrar
+                );
+            }
+            else
+            {
+                aplicarCor.ForcarEstiloPorEnum(
+                    ConfigurarCor.EstiloVisual.Inativo,
+                    btnEntrar
+                );
+            }
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -87,8 +99,6 @@ namespace Livraria
                 else
                 {
                     MessageBox.Show("Login ou senha inválidos!", "Atenção!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    inputLogin.Clear();
-                    inputSenha.Clear();
                     inputLogin.Focus();
                 }
             }

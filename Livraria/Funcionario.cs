@@ -5,7 +5,8 @@ namespace Livraria
 {
     public partial class Funcionario : UserControl
     {
-        AplicarCor aplicarCor = new AplicarCor();
+        Limpar limpar=new Limpar();
+        ConfigurarCor aplicarCor = new ConfigurarCor();
         public Funcionario()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace Livraria
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DesabilitaCampos();
+            limpar.LimparCampos(inputNome, inputLogin, inputSenha);
         }
 
         public void DesabilitaCampos()
@@ -38,7 +40,15 @@ namespace Livraria
             btnRemover.Enabled = false;
             btnCancelar.Enabled = false;
 
-            aplicarCor.AplicarCorDesabilitada(btnSalvar, btnAlterar, btnRemover, btnCancelar);
+            var (corBotaoDesabilitado, corTextoDesabilitado) =
+                ConfigurarCor.
+                    PaletaCores.ObterCores(ConfigurarCor.EstiloVisual.Inativo);
+
+            aplicarCor.ForcarEstiloPorEnum(
+                ConfigurarCor.EstiloVisual.Inativo,
+                    btnSalvar, btnAlterar, btnRemover, btnCancelar
+            );
+
         }
         public void HabilitaCampos()
         {
@@ -53,10 +63,15 @@ namespace Livraria
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
 
+            var (corBotaoHabilitado, corTextoHabilitado) =
+                ConfigurarCor.PaletaCores.
+                    ObterCores(ConfigurarCor.EstiloVisual.Ativo);
+
             aplicarCor.RestaurarEstiloPersonalizado(
-                SystemColors.GradientActiveCaption, SystemColors.Highlight,
-                btnSalvar, btnAlterar, btnRemover, btnCancelar
-                );
+                corBotaoHabilitado, corTextoHabilitado,
+                    btnSalvar, btnAlterar, btnRemover, btnCancelar
+            );
+
         }
     }
 }
