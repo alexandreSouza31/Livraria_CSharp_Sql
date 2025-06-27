@@ -12,7 +12,7 @@ namespace Livraria
             InitializeComponent();
 
             btnEntrar.Enabled = false;
-            btnEntrar.BackColor = Color.Gray;
+            btnEntrar.BackColor = Color.LightGray;
 
             btnSenhaVisivel.Visible = false;
 
@@ -23,16 +23,6 @@ namespace Livraria
         SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
         SqlCommand cm = new SqlCommand();
         SqlDataReader dt;
-
-        private void btnFecharApp_Click(object sender, EventArgs e)
-        {
-            var resultado = DesejaSair.Confirmar();
-
-            if (resultado == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
 
         private void btnSenha_Click(object sender, EventArgs e)
         {
@@ -51,6 +41,7 @@ namespace Livraria
         private void inputLogin_TextChanged(object sender, EventArgs e)
         {
             VerificarCampos();
+            inputLogin.Focus();
         }
 
         private void inputSenha_TextChanged(object sender, EventArgs e)
@@ -114,9 +105,15 @@ namespace Livraria
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
 
+        private void btnSairApp_Click_1(object sender, EventArgs e)
+        {
+            var resultado = DesejaSair.Confirmar();
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

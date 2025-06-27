@@ -18,7 +18,7 @@ namespace Livraria
             InitializeComponent();
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
             var resultado = DesejaSair.Confirmar();
 
@@ -28,11 +28,6 @@ namespace Livraria
                 login.Show();
                 this.Hide();
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

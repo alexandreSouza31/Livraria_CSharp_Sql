@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             menuLateral = new Panel();
-            btnFechar = new Button();
+            btnSair = new Button();
             btnCaixa = new Button();
             btnPedido = new Button();
             btnAutor = new Button();
@@ -52,7 +52,7 @@
             // menuLateral
             // 
             menuLateral.BackColor = SystemColors.GradientActiveCaption;
-            menuLateral.Controls.Add(btnFechar);
+            menuLateral.Controls.Add(btnSair);
             menuLateral.Controls.Add(btnCaixa);
             menuLateral.Controls.Add(btnPedido);
             menuLateral.Controls.Add(btnAutor);
@@ -69,22 +69,23 @@
             menuLateral.Size = new Size(220, 595);
             menuLateral.TabIndex = 0;
             // 
-            // btnFechar
+            // btnSair
             // 
-            btnFechar.BackColor = SystemColors.GradientActiveCaption;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btnFechar.ForeColor = Color.Black;
-            btnFechar.Location = new Point(43, 599);
-            btnFechar.Margin = new Padding(0);
-            btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(133, 51);
-            btnFechar.TabIndex = 1;
-            btnFechar.Text = "Sair";
-            btnFechar.UseVisualStyleBackColor = false;
-            btnFechar.Click += btnFechar_Click;
+            btnSair.BackColor = SystemColors.GradientActiveCaption;
+            btnSair.Cursor = Cursors.Hand;
+            btnSair.Dock = DockStyle.Top;
+            btnSair.FlatAppearance.BorderSize = 0;
+            btnSair.FlatStyle = FlatStyle.Flat;
+            btnSair.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnSair.ForeColor = Color.Black;
+            btnSair.Location = new Point(0, 524);
+            btnSair.Margin = new Padding(0);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(220, 40);
+            btnSair.TabIndex = 3;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // btnCaixa
             // 
@@ -93,7 +94,7 @@
             btnCaixa.FlatAppearance.BorderSize = 0;
             btnCaixa.FlatStyle = FlatStyle.Flat;
             btnCaixa.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCaixa.Location = new Point(0, 514);
+            btnCaixa.Location = new Point(0, 484);
             btnCaixa.Name = "btnCaixa";
             btnCaixa.Size = new Size(220, 40);
             btnCaixa.TabIndex = 11;
@@ -107,7 +108,7 @@
             btnPedido.FlatAppearance.BorderSize = 0;
             btnPedido.FlatStyle = FlatStyle.Flat;
             btnPedido.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnPedido.Location = new Point(0, 474);
+            btnPedido.Location = new Point(0, 444);
             btnPedido.Name = "btnPedido";
             btnPedido.Size = new Size(220, 40);
             btnPedido.TabIndex = 10;
@@ -121,7 +122,7 @@
             btnAutor.FlatAppearance.BorderSize = 0;
             btnAutor.FlatStyle = FlatStyle.Flat;
             btnAutor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnAutor.Location = new Point(0, 434);
+            btnAutor.Location = new Point(0, 404);
             btnAutor.Name = "btnAutor";
             btnAutor.Size = new Size(220, 40);
             btnAutor.TabIndex = 9;
@@ -135,7 +136,7 @@
             btnEditora.FlatAppearance.BorderSize = 0;
             btnEditora.FlatStyle = FlatStyle.Flat;
             btnEditora.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnEditora.Location = new Point(0, 394);
+            btnEditora.Location = new Point(0, 364);
             btnEditora.Name = "btnEditora";
             btnEditora.Size = new Size(220, 40);
             btnEditora.TabIndex = 8;
@@ -149,7 +150,7 @@
             btnCategoria.FlatAppearance.BorderSize = 0;
             btnCategoria.FlatStyle = FlatStyle.Flat;
             btnCategoria.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCategoria.Location = new Point(0, 354);
+            btnCategoria.Location = new Point(0, 324);
             btnCategoria.Name = "btnCategoria";
             btnCategoria.Size = new Size(220, 40);
             btnCategoria.TabIndex = 7;
@@ -163,7 +164,7 @@
             btnLivro.FlatAppearance.BorderSize = 0;
             btnLivro.FlatStyle = FlatStyle.Flat;
             btnLivro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnLivro.Location = new Point(0, 314);
+            btnLivro.Location = new Point(0, 284);
             btnLivro.Name = "btnLivro";
             btnLivro.Size = new Size(220, 40);
             btnLivro.TabIndex = 6;
@@ -177,7 +178,7 @@
             btnTelefone.FlatAppearance.BorderSize = 0;
             btnTelefone.FlatStyle = FlatStyle.Flat;
             btnTelefone.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnTelefone.Location = new Point(0, 274);
+            btnTelefone.Location = new Point(0, 244);
             btnTelefone.Name = "btnTelefone";
             btnTelefone.Size = new Size(220, 40);
             btnTelefone.TabIndex = 5;
@@ -191,7 +192,7 @@
             btnCliente.FlatAppearance.BorderSize = 0;
             btnCliente.FlatStyle = FlatStyle.Flat;
             btnCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCliente.Location = new Point(0, 234);
+            btnCliente.Location = new Point(0, 204);
             btnCliente.Name = "btnCliente";
             btnCliente.Size = new Size(220, 40);
             btnCliente.TabIndex = 4;
@@ -205,7 +206,7 @@
             btnFuncionario.FlatAppearance.BorderSize = 0;
             btnFuncionario.FlatStyle = FlatStyle.Flat;
             btnFuncionario.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnFuncionario.Location = new Point(0, 194);
+            btnFuncionario.Location = new Point(0, 164);
             btnFuncionario.Name = "btnFuncionario";
             btnFuncionario.Size = new Size(220, 40);
             btnFuncionario.TabIndex = 3;
@@ -219,7 +220,7 @@
             containerLogo.Dock = DockStyle.Top;
             containerLogo.Location = new Point(0, 0);
             containerLogo.Name = "containerLogo";
-            containerLogo.Size = new Size(220, 194);
+            containerLogo.Size = new Size(220, 164);
             containerLogo.TabIndex = 2;
             // 
             // titulo
@@ -244,11 +245,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.icone_livros;
-            pictureBox1.Location = new Point(220, 0);
+            pictureBox1.Location = new Point(419, 93);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(848, 595);
+            pictureBox1.Size = new Size(449, 409);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -286,7 +286,7 @@
         private Button btnLivro;
         private Button btnTelefone;
         private Button btnCliente;
-        private Button btnFechar;
         private PictureBox pictureBox1;
+        private Button btnSair;
     }
 }

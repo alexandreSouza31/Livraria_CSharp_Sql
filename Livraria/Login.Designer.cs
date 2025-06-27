@@ -45,7 +45,7 @@
             inputLogin = new TextBox();
             pictureBox3 = new PictureBox();
             label3 = new Label();
-            btnFechar = new Button();
+            btnSairApp = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -114,7 +114,7 @@
             panel2.Controls.Add(caixaSenha);
             panel2.Controls.Add(caixaLogin);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(btnFechar);
+            panel2.Controls.Add(btnSairApp);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(300, 0);
             panel2.Name = "panel2";
@@ -242,24 +242,23 @@
             label3.Size = new Size(105, 48);
             label3.TabIndex = 2;
             label3.Text = "Login";
-            label3.Click += label3_Click;
             // 
-            // btnFechar
+            // btnSairApp
             // 
-            btnFechar.BackColor = SystemColors.GradientActiveCaption;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btnFechar.ForeColor = Color.Black;
-            btnFechar.Location = new Point(226, 289);
-            btnFechar.Margin = new Padding(0);
-            btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(200, 51);
-            btnFechar.TabIndex = 0;
-            btnFechar.Text = "Sair";
-            btnFechar.UseVisualStyleBackColor = false;
-            btnFechar.Click += btnFecharApp_Click;
+            btnSairApp.BackColor = SystemColors.GradientActiveCaption;
+            btnSairApp.Cursor = Cursors.Hand;
+            btnSairApp.FlatAppearance.BorderSize = 0;
+            btnSairApp.FlatStyle = FlatStyle.Flat;
+            btnSairApp.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnSairApp.ForeColor = Color.Black;
+            btnSairApp.Location = new Point(226, 289);
+            btnSairApp.Margin = new Padding(0);
+            btnSairApp.Name = "btnSairApp";
+            btnSairApp.Size = new Size(200, 51);
+            btnSairApp.TabIndex = 0;
+            btnSairApp.Text = "Sair";
+            btnSairApp.UseVisualStyleBackColor = false;
+            btnSairApp.Click += btnSairApp_Click_1;
             // 
             // Login
             // 
@@ -294,7 +293,7 @@
         private Label label1;
         private Panel panel2;
         private Label label2;
-        private Button btnFechar;
+        private Button btnSairApp;
         private Label label3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;

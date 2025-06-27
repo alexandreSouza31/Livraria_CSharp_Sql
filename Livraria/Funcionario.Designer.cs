@@ -48,6 +48,7 @@
             btnSalvar = new Button();
             btnCancelar = new Button();
             btnRemover = new Button();
+            inputCodigoDB = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRetornoPesquisa).BeginInit();
             groupBoxPesquisarFuncionario.SuspendLayout();
             SuspendLayout();
@@ -70,9 +71,10 @@
             labelCodigo.ForeColor = SystemColors.Desktop;
             labelCodigo.Location = new Point(98, 169);
             labelCodigo.Name = "labelCodigo";
-            labelCodigo.Size = new Size(74, 25);
+            labelCodigo.Size = new Size(79, 25);
             labelCodigo.TabIndex = 1;
-            labelCodigo.Text = "Código";
+            labelCodigo.Text = "Código:";
+            labelCodigo.Visible = false;
             // 
             // labelLogin
             // 
@@ -81,9 +83,9 @@
             labelLogin.ForeColor = SystemColors.Desktop;
             labelLogin.Location = new Point(98, 249);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(61, 25);
+            labelLogin.Size = new Size(66, 25);
             labelLogin.TabIndex = 2;
-            labelLogin.Text = "Login";
+            labelLogin.Text = "Login:";
             // 
             // labelNome
             // 
@@ -92,9 +94,9 @@
             labelNome.ForeColor = SystemColors.Desktop;
             labelNome.Location = new Point(98, 209);
             labelNome.Name = "labelNome";
-            labelNome.Size = new Size(65, 25);
+            labelNome.Size = new Size(70, 25);
             labelNome.TabIndex = 3;
-            labelNome.Text = "Nome";
+            labelNome.Text = "Nome:";
             // 
             // inputNome
             // 
@@ -133,9 +135,9 @@
             labelSenha.ForeColor = SystemColors.Desktop;
             labelSenha.Location = new Point(98, 289);
             labelSenha.Name = "labelSenha";
-            labelSenha.Size = new Size(65, 25);
+            labelSenha.Size = new Size(70, 25);
             labelSenha.TabIndex = 6;
-            labelSenha.Text = "Senha";
+            labelSenha.Text = "Senha:";
             // 
             // textBox4
             // 
@@ -173,7 +175,7 @@
             // dgvRetornoPesquisa
             // 
             dgvRetornoPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRetornoPesquisa.Location = new Point(98, 410);
+            dgvRetornoPesquisa.Location = new Point(98, 438);
             dgvRetornoPesquisa.Name = "dgvRetornoPesquisa";
             dgvRetornoPesquisa.Size = new Size(491, 132);
             dgvRetornoPesquisa.TabIndex = 11;
@@ -183,7 +185,7 @@
             groupBoxPesquisarFuncionario.Controls.Add(textBox2);
             groupBoxPesquisarFuncionario.Controls.Add(inputPesquisarFuncionario);
             groupBoxPesquisarFuncionario.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            groupBoxPesquisarFuncionario.Location = new Point(98, 334);
+            groupBoxPesquisarFuncionario.Location = new Point(98, 362);
             groupBoxPesquisarFuncionario.Name = "groupBoxPesquisarFuncionario";
             groupBoxPesquisarFuncionario.Size = new Size(491, 66);
             groupBoxPesquisarFuncionario.TabIndex = 13;
@@ -219,7 +221,7 @@
             btnNovo.FlatStyle = FlatStyle.Flat;
             btnNovo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnNovo.ForeColor = SystemColors.Highlight;
-            btnNovo.Location = new Point(646, 169);
+            btnNovo.Location = new Point(646, 175);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(100, 55);
             btnNovo.TabIndex = 14;
@@ -234,7 +236,7 @@
             btnAlterar.FlatStyle = FlatStyle.Flat;
             btnAlterar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnAlterar.ForeColor = SystemColors.Highlight;
-            btnAlterar.Location = new Point(646, 327);
+            btnAlterar.Location = new Point(646, 345);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(100, 55);
             btnAlterar.TabIndex = 15;
@@ -249,7 +251,7 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnSalvar.ForeColor = SystemColors.Highlight;
-            btnSalvar.Location = new Point(646, 248);
+            btnSalvar.Location = new Point(646, 260);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(100, 55);
             btnSalvar.TabIndex = 16;
@@ -264,7 +266,7 @@
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnCancelar.ForeColor = SystemColors.Highlight;
-            btnCancelar.Location = new Point(646, 487);
+            btnCancelar.Location = new Point(646, 515);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(100, 55);
             btnCancelar.TabIndex = 17;
@@ -279,17 +281,30 @@
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnRemover.ForeColor = SystemColors.Highlight;
-            btnRemover.Location = new Point(646, 408);
+            btnRemover.Location = new Point(646, 430);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(100, 55);
             btnRemover.TabIndex = 18;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
             // 
+            // inputCodigoDB
+            // 
+            inputCodigoDB.AutoSize = true;
+            inputCodigoDB.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            inputCodigoDB.ForeColor = SystemColors.Desktop;
+            inputCodigoDB.Location = new Point(178, 169);
+            inputCodigoDB.Name = "inputCodigoDB";
+            inputCodigoDB.Size = new Size(17, 25);
+            inputCodigoDB.TabIndex = 19;
+            inputCodigoDB.Text = " ";
+            inputCodigoDB.Visible = false;
+            // 
             // Funcionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(inputCodigoDB);
             Controls.Add(btnRemover);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
@@ -340,5 +355,6 @@
         private Button btnSalvar;
         private Button btnCancelar;
         private Button btnRemover;
+        private Label inputCodigoDB;
     }
 }
