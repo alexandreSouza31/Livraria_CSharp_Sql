@@ -12,6 +12,7 @@ namespace Livraria
 
         //conexão
         SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
+        SqlCommand cm = new SqlCommand();
         SqlDataReader dt;
 
         public Funcionario()
@@ -97,11 +98,12 @@ namespace Livraria
                 string senha = inputSenha.Text;
 
 
-                string sql = $"INSERT INTO tbl_funcionario" +
+                string sqlInsert = $"INSERT INTO tbl_funcionario" +
                     $"(nm_funcionario,ds_login,ds_senha) " +
                     $"VALUES (@nome,@login,@senha)";
 
-                SqlCommand cm = new SqlCommand(sql, cn);
+                cm.CommandText = sqlInsert;
+                cm.Connection = cn;
 
                 cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
                 cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
