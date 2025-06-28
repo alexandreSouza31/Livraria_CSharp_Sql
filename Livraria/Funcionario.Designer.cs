@@ -181,9 +181,12 @@
             dgvRetornoPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRetornoPesquisa.GridColor = SystemColors.Highlight;
             dgvRetornoPesquisa.Location = new Point(98, 438);
+            dgvRetornoPesquisa.MultiSelect = false;
             dgvRetornoPesquisa.Name = "dgvRetornoPesquisa";
+            dgvRetornoPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRetornoPesquisa.Size = new Size(491, 132);
             dgvRetornoPesquisa.TabIndex = 11;
+            dgvRetornoPesquisa.MouseDoubleClick += dgvRetornoPesquisa_MouseDoubleClick;
             // 
             // groupBoxPesquisarFuncionario
             // 
@@ -249,6 +252,7 @@
             btnAlterar.TabIndex = 15;
             btnAlterar.Text = "Alterar";
             btnAlterar.UseVisualStyleBackColor = false;
+            btnAlterar.Click += btnAlterar_Click;
             // 
             // btnSalvar
             // 

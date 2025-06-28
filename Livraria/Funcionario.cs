@@ -165,5 +165,49 @@ namespace Livraria
                 dgvRetornoPesquisa.DataSource = null;
             }
         }
+
+        private void dgvRetornoPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            CarregarFuncionario();
+        }
+
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            HabilitaCampos();
+        }
+
+        private void CarregarFuncionario()
+        {
+            inputCodigoDB.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[0].Value.ToString();
+            inputLogin.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[1].Value.ToString();
+            inputSenha.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[2].Value.ToString();
+            inputNome.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[3].Value.ToString();
+
+            btnAlterar.Enabled = true;
+            btnSalvar.Enabled = true;
+            btnRemover.Enabled = true;
+            btnCancelar.Enabled = true;
+            labelCodigo.Visible = true;
+            inputCodigoDB.Visible = true;
+
+            var (corBotaoHabilitado, corTextoHabilitado) =
+                ConfigurarCor.PaletaCores.
+                    ObterCores(ConfigurarCor.EstiloVisual.Ativo);
+
+            aplicarCor.RestaurarEstiloPersonalizado(
+                corBotaoHabilitado, corTextoHabilitado,
+                    btnSalvar, btnAlterar, btnRemover, btnCancelar
+            );
+
+            var (corBotaoDesabilitado, corTextoDesabilitado) =
+                ConfigurarCor.PaletaCores.
+                    ObterCores(ConfigurarCor.EstiloVisual.Inativo);
+
+            aplicarCor.RestaurarEstiloPersonalizado(
+                corBotaoDesabilitado, corTextoDesabilitado,
+                    btnNovo
+            );
+        }
     }
 }
