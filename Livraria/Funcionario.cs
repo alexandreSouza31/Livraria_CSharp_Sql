@@ -1,12 +1,19 @@
 ﻿using Livraria.Utils;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 namespace Livraria
 {
     public partial class Funcionario : UserControl
     {
-        Limpar limpar=new Limpar();
+        Limpar limpar = new Limpar();
         ConfigurarCor aplicarCor = new ConfigurarCor();
+
+        //conexão
+        SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
+        SqlDataReader dt;
+
         public Funcionario()
         {
             InitializeComponent();
@@ -72,6 +79,64 @@ namespace Livraria
                     btnSalvar, btnAlterar, btnRemover, btnCancelar
             );
 
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            var validarInput = Validar.ValidarCampos(
+                new TextBox[] { inputNome, inputLogin, inputSenha },
+                new string[] { "Nome", "Login", "Senha" }
+            );
+
+            if (!validarInput) return;
+
+            try
+            {
+                string nome = inputNome.Text;
+                string login = inputLogin.Text;
+                string senha = inputSenha.Text;
+
+
+                string sql = $"INSERT INTO tbl_funcionario" +
+                    $"(nm_funcionario,ds_login,ds_senha) " +
+                    $"VALUES (@nome,@login,@senha)";
+
+                SqlCommand cm = new SqlCommand(sql, cn);
+
+                cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
+                cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
+                cm.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+
+                cn.Open();
+                cm.ExecuteNonQuery();
+                MessageBox.Show($"Funcionário(a) \"{nome}\" cadastrado(a) com sucesso!", "Cadastrado!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+                inputNome.Focus();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+                cn.Close();
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }                                           
+                                                    
+        private void labelSenha_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void labelSenha_MouseDown(object sender, MouseEventArgs e)
+        {
+            inputSenha.UseSystemPasswordChar = false;
+        }
+
+        private void labelSenha_MouseUp(object sender, MouseEventArgs e)
+        {
+            inputSenha.UseSystemPasswordChar = true;
         }
     }
 }

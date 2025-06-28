@@ -120,6 +120,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(434, 491);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // btnEntrar
             // 
@@ -173,6 +174,7 @@
             // 
             // btnSenha
             // 
+            btnSenha.Cursor = Cursors.Hand;
             btnSenha.Image = Properties.Resources.icone_senha1;
             btnSenha.Location = new Point(3, 3);
             btnSenha.Name = "btnSenha";

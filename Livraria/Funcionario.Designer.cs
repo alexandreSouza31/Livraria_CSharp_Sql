@@ -127,10 +127,12 @@
             inputSenha.Name = "inputSenha";
             inputSenha.Size = new Size(239, 25);
             inputSenha.TabIndex = 7;
+            inputSenha.UseSystemPasswordChar = true;
             // 
             // labelSenha
             // 
             labelSenha.AutoSize = true;
+            labelSenha.Cursor = Cursors.Hand;
             labelSenha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelSenha.ForeColor = SystemColors.Desktop;
             labelSenha.Location = new Point(98, 289);
@@ -138,6 +140,9 @@
             labelSenha.Size = new Size(70, 25);
             labelSenha.TabIndex = 6;
             labelSenha.Text = "Senha:";
+            labelSenha.Click += labelSenha_Click;
+            labelSenha.MouseDown += labelSenha_MouseDown;
+            labelSenha.MouseUp += labelSenha_MouseUp;
             // 
             // textBox4
             // 
@@ -258,6 +263,7 @@
             btnSalvar.TabIndex = 16;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
