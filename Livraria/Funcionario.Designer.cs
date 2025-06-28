@@ -140,7 +140,6 @@
             labelSenha.Size = new Size(70, 25);
             labelSenha.TabIndex = 6;
             labelSenha.Text = "Senha:";
-            labelSenha.Click += labelSenha_Click;
             labelSenha.MouseDown += labelSenha_MouseDown;
             labelSenha.MouseUp += labelSenha_MouseUp;
             // 
@@ -180,6 +179,7 @@
             // dgvRetornoPesquisa
             // 
             dgvRetornoPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRetornoPesquisa.GridColor = SystemColors.Highlight;
             dgvRetornoPesquisa.Location = new Point(98, 438);
             dgvRetornoPesquisa.Name = "dgvRetornoPesquisa";
             dgvRetornoPesquisa.Size = new Size(491, 132);
@@ -217,6 +217,7 @@
             inputPesquisarFuncionario.Name = "inputPesquisarFuncionario";
             inputPesquisarFuncionario.Size = new Size(411, 25);
             inputPesquisarFuncionario.TabIndex = 14;
+            inputPesquisarFuncionario.TextChanged += inputPesquisarFuncionario_TextChanged;
             // 
             // btnNovo
             // 

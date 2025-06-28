@@ -104,6 +104,7 @@ namespace Livraria
 
                 cm.CommandText = sqlInsert;
                 cm.Connection = cn;
+                cm.Parameters.Clear();
 
                 cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
                 cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
@@ -116,21 +117,10 @@ namespace Livraria
                 inputNome.Focus();
 
             }
-            catch (Exception erro)
-            {
-                MessageBox.Show(erro.Message);
-                cn.Close();
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }                                           
-                                                    
-        private void labelSenha_Click(object sender, EventArgs e)
-        {
-
+            catch (Exception erro) { MessageBox.Show(erro.Message); }
+            finally { cn.Close(); }
         }
+
         private void labelSenha_MouseDown(object sender, MouseEventArgs e)
         {
             inputSenha.UseSystemPasswordChar = false;
@@ -139,6 +129,41 @@ namespace Livraria
         private void labelSenha_MouseUp(object sender, MouseEventArgs e)
         {
             inputSenha.UseSystemPasswordChar = true;
+        }
+
+        private void inputPesquisarFuncionario_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(inputPesquisarFuncionario.Text))
+            {
+                try
+                {
+                    cn.Open();
+
+                    string sql = "SELECT * FROM tbl_funcionario WHERE nm_funcionario LIKE @nome";
+                    cm.CommandText = sql;
+                    cm.Parameters.Clear();
+                    cm.Parameters.AddWithValue("@nome", $"%{inputPesquisarFuncionario.Text}%");
+                    cm.Connection = cn;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cm);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvRetornoPesquisa.DataSource = dt;
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show($"Erro ao pesquisar funcionário:\n{erro.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+            else
+            {
+                dgvRetornoPesquisa.DataSource = null;
+            }
         }
     }
 }
