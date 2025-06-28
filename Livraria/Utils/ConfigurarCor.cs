@@ -30,45 +30,27 @@ namespace Livraria.Utils
             }
         }
 
-        public void AplicarCorDesabilitada(params Button[] botoes)
+        public void RestaurarEstiloPersonalizado(Color corBotao, Color corTexto, params Control[] controles)
         {
-            var (corBotaoDesabilitado, corTextoDesabilitado) = PaletaCores.ObterCores(EstiloVisual.Inativo);
+            if (corBotao.IsEmpty && corTexto.IsEmpty)
+                (corBotao, corTexto) = PaletaCores.ObterCores(EstiloVisual.Ativo);
 
-            foreach (var botao in botoes)
-            {
-                if (!botao.Enabled)
+            foreach (var ctrl in controles)
+                if (ctrl.Enabled)
                 {
-                    botao.BackColor = corBotaoDesabilitado;
-                    botao.ForeColor = corTextoDesabilitado;
+                    ctrl.BackColor = corBotao;
+                    ctrl.ForeColor = corTexto;
                 }
-            }
         }
 
-        public void RestaurarEstiloPersonalizado(Color corBotaoHabilitado, Color corTextoHabilitado, params Button[] botoes)
-        {
-            if (corBotaoHabilitado.IsEmpty && corTextoHabilitado.IsEmpty)
-            {
-                (corBotaoHabilitado, corTextoHabilitado) = PaletaCores.ObterCores(EstiloVisual.Ativo);
-            }
-
-            foreach (var botao in botoes)
-            {
-                if (botao.Enabled)
-                {
-                    botao.BackColor = corBotaoHabilitado;
-                    botao.ForeColor = corTextoHabilitado;
-                }
-            }
-        }
-
-        public void ForcarEstiloPorEnum(EstiloVisual estilo, params Button[] botoes)
+        public void ForcarEstiloPorEnum(EstiloVisual estilo, params Control[] controles)
         {
             var (corBotao, corTexto) = PaletaCores.ObterCores(estilo);
 
-            foreach (var botao in botoes)
+            foreach (var ctrl in controles)
             {
-                botao.BackColor = corBotao;
-                botao.ForeColor = corTexto;
+                ctrl.BackColor = corBotao;
+                ctrl.ForeColor = corTexto;
             }
         }
     }
