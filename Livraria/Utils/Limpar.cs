@@ -2,11 +2,14 @@
 {
     class Limpar
     {
-        public void LimparCampos(params TextBox[] campos)
+        public void LimparCampos(params Control[] controles)
         {
-            foreach (var campo in campos)
+            foreach (var ctrl in controles)
             {
-                campo.Clear();
+                if (ctrl is TextBox || ctrl is MaskedTextBox || ctrl is Label)
+                {
+                    ctrl.Text = "";
+                }
             }
         }
     }
