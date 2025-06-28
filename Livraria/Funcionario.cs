@@ -66,6 +66,7 @@ namespace Livraria
                 gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text);
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
                 limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+                radioBtnAtivo.Checked = true;
                 inputNome.Focus();
             }
             catch (Exception erro)
@@ -85,7 +86,7 @@ namespace Livraria
                 labelNome, labelLogin, labelSenha,
                 btnSalvar, btnAlterar, btnRemover, btnCancelar);
 
-            gerenciarCampos.DesabilitarCampos(btnRemover,btnSalvar);
+            gerenciarCampos.DesabilitarCampos(btnRemover, btnSalvar);
 
             var validarInput = Validar.ValidarCampos(
                 new TextBox[] { inputNome, inputLogin, inputSenha },
@@ -100,6 +101,7 @@ namespace Livraria
                 gerenciarDados.Editar(codigo, inputNome.Text, inputLogin.Text, inputSenha.Text);
                 MessageBox.Show("Funcionário editado com sucesso!");
                 limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+                radioBtnAtivo.Checked = true;
                 inputCodigoDB.Text = "";
                 inputPesquisarFuncionario.Text = "";
                 gerenciarCampos.HabilitarCampos(btnNovo);
@@ -153,6 +155,9 @@ namespace Livraria
         private void dgvRetornoPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CarregarFuncionario();
+
+            if(radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnRemover);
+            else gerenciarCampos.DesabilitarCampos(btnRemover);
         }
 
         private void CarregarFuncionario()
@@ -161,12 +166,16 @@ namespace Livraria
             inputLogin.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[1].Value.ToString();
             inputSenha.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[2].Value.ToString();
             inputNome.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[3].Value.ToString();
+            string radioButtonAtivo = dgvRetornoPesquisa.SelectedRows[0].Cells[4].Value.ToString()!;
 
-            gerenciarCampos.DesabilitarCampos(btnSalvar);
-            gerenciarCampos.HabilitarCampos(
-                inputNome, inputLogin, inputSenha, inputCodigoDB,
-                btnAlterar, btnRemover, btnCancelar,
-                labelNome, labelLogin, labelSenha, labelCodigo);
+            if (radioButtonAtivo == "True") radioBtnAtivo.Checked = true;
+            else radioBtnInativo.Checked = true;
+
+                gerenciarCampos.DesabilitarCampos(btnSalvar);
+                gerenciarCampos.HabilitarCampos(
+                    inputNome, inputLogin, inputSenha, inputCodigoDB,
+                    btnAlterar, btnRemover, btnCancelar,
+                    labelNome, labelLogin, labelSenha, labelCodigo);
 
             labelCodigo.Visible = true;
             inputCodigoDB.Visible = true;
@@ -181,6 +190,7 @@ namespace Livraria
 
             gerenciarCampos.HabilitarCampos(btnNovo);
             limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+            radioBtnAtivo.Checked = true;
             inputCodigoDB.Text = "";
         }
 
@@ -192,6 +202,11 @@ namespace Livraria
         private void labelSenha_MouseUp(object sender, MouseEventArgs e)
         {
             inputSenha.UseSystemPasswordChar = true;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

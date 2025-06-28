@@ -18,11 +18,16 @@ namespace Livraria.Dados
         {
             string sql = "UPDATE tbl_funcionario SET nm_funcionario=@nome, ds_login=@login, ds_senha=@senha WHERE cd_funcionario=@cod";
             cm.Parameters.Add("@cod", SqlDbType.Int).Value = codigo;
-            ExecutarComando(sql, nome, login, senha);
+            ExecutarComando(sql, nome, login, senha, codigo);
         }
 
-        private void ExecutarComando(string sql, string nome, string login, string senha)
+        private void ExecutarComando(string sql, string nome, string login, string senha, int? codigo = null)
         {
+            cm.Parameters.Clear();
+
+            if (sql.Contains("@cod") && codigo.HasValue)
+                cm.Parameters.Add("@cod", SqlDbType.Int).Value = codigo.Value;
+
             cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
             cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
             cm.Parameters.Add("@senha", SqlDbType.Char).Value = senha;

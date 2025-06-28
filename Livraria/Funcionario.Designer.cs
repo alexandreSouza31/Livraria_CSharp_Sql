@@ -49,6 +49,9 @@
             btnCancelar = new Button();
             btnRemover = new Button();
             inputCodigoDB = new Label();
+            labelStatus = new Label();
+            radioBtnAtivo = new RadioButton();
+            radioBtnInativo = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)dgvRetornoPesquisa).BeginInit();
             groupBoxPesquisarFuncionario.SuspendLayout();
             SuspendLayout();
@@ -305,7 +308,7 @@
             // 
             inputCodigoDB.AutoSize = true;
             inputCodigoDB.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            inputCodigoDB.ForeColor = SystemColors.Desktop;
+            inputCodigoDB.ForeColor = SystemColors.Highlight;
             inputCodigoDB.Location = new Point(178, 169);
             inputCodigoDB.Name = "inputCodigoDB";
             inputCodigoDB.Size = new Size(17, 25);
@@ -313,10 +316,51 @@
             inputCodigoDB.Text = " ";
             inputCodigoDB.Visible = false;
             // 
+            // labelStatus
+            // 
+            labelStatus.AutoSize = true;
+            labelStatus.Cursor = Cursors.Hand;
+            labelStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelStatus.ForeColor = SystemColors.Desktop;
+            labelStatus.Location = new Point(231, 169);
+            labelStatus.Name = "labelStatus";
+            labelStatus.Size = new Size(71, 25);
+            labelStatus.TabIndex = 20;
+            labelStatus.Text = "Status:";
+            // 
+            // radioBtnAtivo
+            // 
+            radioBtnAtivo.AutoSize = true;
+            radioBtnAtivo.Checked = true;
+            radioBtnAtivo.Font = new Font("Segoe UI", 10F);
+            radioBtnAtivo.Location = new Point(308, 172);
+            radioBtnAtivo.Name = "radioBtnAtivo";
+            radioBtnAtivo.Size = new Size(59, 23);
+            radioBtnAtivo.TabIndex = 21;
+            radioBtnAtivo.TabStop = true;
+            radioBtnAtivo.Text = "Ativo";
+            radioBtnAtivo.UseVisualStyleBackColor = true;
+            // 
+            // radioBtnInativo
+            // 
+            radioBtnInativo.AutoSize = true;
+            radioBtnInativo.Font = new Font("Segoe UI", 10F);
+            radioBtnInativo.Location = new Point(373, 172);
+            radioBtnInativo.Name = "radioBtnInativo";
+            radioBtnInativo.Size = new Size(69, 23);
+            radioBtnInativo.TabIndex = 22;
+            radioBtnInativo.TabStop = true;
+            radioBtnInativo.Text = "Inativo";
+            radioBtnInativo.UseVisualStyleBackColor = true;
+            radioBtnInativo.CheckedChanged += radioButton1_CheckedChanged;
+            // 
             // Funcionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(radioBtnInativo);
+            Controls.Add(radioBtnAtivo);
+            Controls.Add(labelStatus);
             Controls.Add(inputCodigoDB);
             Controls.Add(btnRemover);
             Controls.Add(btnCancelar);
@@ -368,5 +412,8 @@
         private Button btnCancelar;
         private Button btnRemover;
         private Label inputCodigoDB;
+        private Label labelStatus;
+        private RadioButton radioBtnAtivo;
+        private RadioButton radioBtnInativo;
     }
 }

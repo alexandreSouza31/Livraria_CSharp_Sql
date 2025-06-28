@@ -77,7 +77,7 @@ namespace Livraria
             try
             {
                 cn.Open();
-                cm.CommandText = "SELECT * FROM tbl_funcionario WHERE ds_Login=@login AND ds_Senha=@senha";
+                cm.CommandText = "SELECT * FROM tbl_funcionario WHERE ds_Login=@login AND ds_Senha=@senha AND ds_status = 1";
                 cm.Parameters.Clear();
                 cm.Parameters.AddWithValue("@login", inputLogin.Text);
                 cm.Parameters.AddWithValue("@senha", inputSenha.Text);

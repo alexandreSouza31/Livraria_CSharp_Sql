@@ -60,3 +60,7 @@ CREATE TABLE tbl_telefone
     FOREIGN KEY(cd_cliente) REFERENCES tbl_cliente(cd_cliente)
 );
 GO
+
+ALTER TABLE tbl_funcionario 
+ADD ds_status BIT not null DEFAULT(1);
+GO
