@@ -5,6 +5,7 @@ namespace Livraria
 {
     public partial class Login : Form
     {
+        GerenciarCampos gerenciarCampos = new GerenciarCampos();
 
         ConfigurarCor aplicarCor = new ConfigurarCor();
         public Login()
@@ -12,6 +13,7 @@ namespace Livraria
             InitializeComponent();
 
             btnEntrar.Enabled = false;
+            gerenciarCampos.DesabilitarCampos(btnEntrar);
             btnSenhaVisivel.Visible = false;
 
             inputSenha.UseSystemPasswordChar = true;
@@ -62,18 +64,11 @@ namespace Livraria
 
             if (habilitar)
             {
-                aplicarCor.RestaurarEstiloPersonalizado(
-                    ConfigurarCor.PaletaCores.CorBotaoAtivo,
-                    ConfigurarCor.PaletaCores.CorTextoAtivo,
-                    btnEntrar
-                );
+                gerenciarCampos.HabilitarCampos(btnEntrar);
             }
             else
             {
-                aplicarCor.ForcarEstiloPorEnum(
-                    ConfigurarCor.EstiloVisual.Inativo,
-                    btnEntrar
-                );
+                gerenciarCampos.DesabilitarCampos(btnEntrar);
             }
         }
 

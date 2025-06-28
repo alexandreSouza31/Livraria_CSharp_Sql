@@ -13,8 +13,8 @@ namespace Livraria.Utils
 
         public static class PaletaCores
         {
-            public static readonly Color CorBotaoAtivo = SystemColors.Highlight;
-            public static readonly Color CorTextoAtivo = SystemColors.GradientActiveCaption;
+            public static readonly Color CorBotaoAtivo = SystemColors.GradientActiveCaption;
+            public static readonly Color CorTextoAtivo = SystemColors.Highlight;
 
             public static readonly Color CorBotaoInativo = Color.LightGray;
             public static readonly Color CorTextoInativo = Color.White;
