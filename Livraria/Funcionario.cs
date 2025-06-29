@@ -54,6 +54,12 @@ namespace Livraria
 
             if (!validarInput) return;
 
+            if (radioBtnInativo.Checked)
+            {
+                MessageBox.Show($"Não é possível cadastrar funcionário com status 'inativo'!", "Atenção!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text,status);
@@ -87,6 +93,12 @@ namespace Livraria
             );
 
             if (!validarInput) return;
+
+            if (radioBtnInativo.Checked) 
+            {
+                MessageBox.Show($"Para tornar funcionário inativo utilize o botão 'Desativar'!", "Atenção!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
