@@ -40,6 +40,7 @@
             btnCliente = new Button();
             btnFuncionario = new Button();
             containerLogo = new Panel();
+            labelNomeFuncionario = new Label();
             titulo = new Label();
             logo = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -225,6 +226,7 @@
             // 
             // containerLogo
             // 
+            containerLogo.Controls.Add(labelNomeFuncionario);
             containerLogo.Controls.Add(titulo);
             containerLogo.Controls.Add(logo);
             containerLogo.Dock = DockStyle.Top;
@@ -233,11 +235,21 @@
             containerLogo.Size = new Size(220, 164);
             containerLogo.TabIndex = 2;
             // 
+            // labelNomeFuncionario
+            // 
+            labelNomeFuncionario.AutoSize = true;
+            labelNomeFuncionario.Font = new Font("Segoe Print", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelNomeFuncionario.Location = new Point(99, 93);
+            labelNomeFuncionario.Name = "labelNomeFuncionario";
+            labelNomeFuncionario.Size = new Size(48, 24);
+            labelNomeFuncionario.TabIndex = 2;
+            labelNomeFuncionario.Text = "name";
+            // 
             // titulo
             // 
             titulo.AutoSize = true;
             titulo.Font = new Font("Segoe Print", 17F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            titulo.Location = new Point(14, 35);
+            titulo.Location = new Point(12, 9);
             titulo.Name = "titulo";
             titulo.Size = new Size(191, 40);
             titulo.TabIndex = 1;
@@ -246,7 +258,7 @@
             // logo
             // 
             logo.Image = Properties.Resources.icone_livros;
-            logo.Location = new Point(71, 78);
+            logo.Location = new Point(21, 66);
             logo.Name = "logo";
             logo.Size = new Size(72, 72);
             logo.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -281,6 +293,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Menu";
             Text = "Menu";
+            Load += Menu_Load;
             menuLateral.ResumeLayout(false);
             containerLogo.ResumeLayout(false);
             containerLogo.PerformLayout();
@@ -307,5 +320,6 @@
         private PictureBox pictureBox1;
         private Button btnSair;
         private Funcionario funcionario1;
+        private Label labelNomeFuncionario;
     }
 }

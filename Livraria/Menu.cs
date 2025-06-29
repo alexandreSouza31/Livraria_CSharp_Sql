@@ -11,7 +11,7 @@ namespace Livraria
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            var resultado = DesejaSair.Confirmar();
+            var resultado = DesejaManipular.ConfirmarAcao("Sair");
 
             if (resultado == DialogResult.Yes)
             {
@@ -19,6 +19,11 @@ namespace Livraria
                 login.Show();
                 this.Hide();
             }
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            Interagir.AplicarTextoLimitado(labelNomeFuncionario, Login.funcionarioLogado);
         }
     }
 }

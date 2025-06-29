@@ -1,5 +1,6 @@
 using Livraria.Utils;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Livraria
 {
@@ -18,11 +19,12 @@ namespace Livraria
 
             inputSenha.UseSystemPasswordChar = true;
         }
+        public static string funcionarioLogado;
 
         //conexão
         SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
         SqlCommand cm = new SqlCommand();
-        SqlDataReader dt;
+        //SqlDataReader dt;
 
         protected override void OnShown(EventArgs e)
         {
@@ -82,10 +84,13 @@ namespace Livraria
                 cm.Parameters.AddWithValue("@login", inputLogin.Text);
                 cm.Parameters.AddWithValue("@senha", inputSenha.Text);
                 cm.Connection = cn;
-                dt = cm.ExecuteReader();
+                SqlDataAdapter adapter = new SqlDataAdapter(cm);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                if (dt.HasRows)
+                if (dt.Rows.Count > 0)
                 {
+                    funcionarioLogado = dt.Rows[0]["nm_funcionario"].ToString()!;
                     Menu menu = new Menu();
                     menu.Show();
                     this.Hide();
