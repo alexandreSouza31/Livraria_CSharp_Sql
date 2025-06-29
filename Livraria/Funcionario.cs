@@ -180,7 +180,7 @@ namespace Livraria
                 {
                     cn.Open();
 
-                    string sql = "SELECT * FROM tbl_funcionario WHERE nm_funcionario LIKE @nome";
+                    string sql = "SELECT cd_funcionario, ds_login, nm_funcionario, ds_status FROM tbl_funcionario WHERE nm_funcionario LIKE @nome";
                     cm.CommandText = sql;
                     cm.Parameters.Clear();
                     cm.Parameters.AddWithValue("@nome", $"%{inputPesquisarFuncionario.Text}%");
