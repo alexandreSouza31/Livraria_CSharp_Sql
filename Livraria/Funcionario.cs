@@ -27,6 +27,7 @@ namespace Livraria
                 labelNome, labelLogin, labelSenha,
                 btnSalvar, btnAlterar, btnDesativar, btnCancelar);
 
+            DicaInterativa.Aplicar(btnDesativar, "Clique aqui para desativar o funcionário (ação reversível)");
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
