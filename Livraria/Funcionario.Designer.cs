@@ -47,7 +47,7 @@
             btnAlterar = new Button();
             btnSalvar = new Button();
             btnCancelar = new Button();
-            btnRemover = new Button();
+            btnDesativar = new Button();
             inputCodigoDB = new Label();
             labelStatus = new Label();
             radioBtnAtivo = new RadioButton();
@@ -289,21 +289,21 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // btnRemover
+            // btnDesativar
             // 
-            btnRemover.BackColor = SystemColors.GradientActiveCaption;
-            btnRemover.Cursor = Cursors.Hand;
-            btnRemover.FlatAppearance.BorderSize = 0;
-            btnRemover.FlatStyle = FlatStyle.Flat;
-            btnRemover.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            btnRemover.ForeColor = SystemColors.Highlight;
-            btnRemover.Location = new Point(646, 430);
-            btnRemover.Name = "btnRemover";
-            btnRemover.Size = new Size(100, 55);
-            btnRemover.TabIndex = 18;
-            btnRemover.Text = "Remover";
-            btnRemover.UseVisualStyleBackColor = false;
-            btnRemover.Click += btnRemover_Click;
+            btnDesativar.BackColor = SystemColors.GradientActiveCaption;
+            btnDesativar.Cursor = Cursors.Hand;
+            btnDesativar.FlatAppearance.BorderSize = 0;
+            btnDesativar.FlatStyle = FlatStyle.Flat;
+            btnDesativar.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            btnDesativar.ForeColor = SystemColors.Highlight;
+            btnDesativar.Location = new Point(646, 430);
+            btnDesativar.Name = "btnDesativar";
+            btnDesativar.Size = new Size(100, 55);
+            btnDesativar.TabIndex = 18;
+            btnDesativar.Text = "Desativar";
+            btnDesativar.UseVisualStyleBackColor = false;
+            btnDesativar.Click += btnDesativar_Click;
             // 
             // inputCodigoDB
             // 
@@ -362,7 +362,7 @@
             Controls.Add(radioBtnAtivo);
             Controls.Add(labelStatus);
             Controls.Add(inputCodigoDB);
-            Controls.Add(btnRemover);
+            Controls.Add(btnDesativar);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(btnAlterar);
@@ -410,7 +410,7 @@
         private Button btnAlterar;
         private Button btnSalvar;
         private Button btnCancelar;
-        private Button btnRemover;
+        private Button btnDesativar;
         private Label inputCodigoDB;
         private Label labelStatus;
         private RadioButton radioBtnAtivo;

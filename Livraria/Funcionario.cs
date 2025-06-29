@@ -25,7 +25,7 @@ namespace Livraria
             gerenciarCampos.DesabilitarCampos(
                 inputNome, inputLogin, inputSenha,
                 labelNome, labelLogin, labelSenha,
-                btnSalvar, btnAlterar, btnRemover, btnCancelar);
+                btnSalvar, btnAlterar, btnDesativar, btnCancelar);
 
         }
 
@@ -42,18 +42,6 @@ namespace Livraria
 
             inputNome.Focus();
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            gerenciarCampos.DesabilitarCampos(
-                inputNome, inputLogin, inputSenha,
-                labelNome, labelLogin, labelSenha,
-                btnSalvar, btnAlterar, btnRemover, btnCancelar);
-
-            gerenciarCampos.HabilitarCampos(btnNovo);
-            limpar.LimparCampos(inputNome, inputLogin, inputSenha);
-        }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var validarInput = Validar.ValidarCampos(
@@ -83,15 +71,14 @@ namespace Livraria
                 cn.Close();
             }
         }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             gerenciarCampos.HabilitarCampos(
                 inputNome, inputLogin, inputSenha,
                 labelNome, labelLogin, labelSenha,
-                btnSalvar, btnAlterar, btnRemover, btnCancelar);
+                btnSalvar, btnAlterar, btnDesativar, btnCancelar);
 
-            gerenciarCampos.DesabilitarCampos(btnRemover, btnSalvar);
+            gerenciarCampos.DesabilitarCampos(btnDesativar, btnSalvar);
 
             var validarInput = Validar.ValidarCampos(
                 new TextBox[] { inputNome, inputLogin, inputSenha },
@@ -120,8 +107,7 @@ namespace Livraria
                 cn.Close();
             }
         }
-
-        private void btnRemover_Click(object sender, EventArgs e)
+        private void btnDesativar_Click(object sender, EventArgs e)
         {
             var validarInput = Validar.ValidarCampos(
                 new TextBox[] { inputNome, inputLogin, inputSenha },
@@ -131,26 +117,37 @@ namespace Livraria
             if (!validarInput) return;
             if (radioBtnAtivo.Checked)
             {
-                MessageBox.Show($"O botão Status deve estar Inativo para Excluir!", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"O botão Status deve estar Inativo para Desativar!", "Erro ao Desativar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var desejaExcluir = DesejaManipular.ConfirmarAcao("Excluir");
+                var desejaDesativar = DesejaManipular.ConfirmarAcao("Desativar");
 
-                if (desejaExcluir == DialogResult.No) return;
+                if (desejaDesativar == DialogResult.No) return;
 
                 try
                 {
                     int codigo = Convert.ToInt32(inputCodigoDB.Text);
-                    gerenciarDados.RemoverUsuarioAtivo(codigo);
+                    gerenciarDados.DesativarUsuario(codigo);
+                    MessageBox.Show("Funcionário desativado com sucesso!");
                     AtualizarPesquisa();
 
                 }
                 catch (Exception erro)
                 {
-                    MessageBox.Show(erro.Message, "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(erro.Message, "Erro ao Desativar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            gerenciarCampos.DesabilitarCampos(
+                inputNome, inputLogin, inputSenha,
+                labelNome, labelLogin, labelSenha,
+                btnSalvar, btnAlterar, btnDesativar, btnCancelar);
+
+            gerenciarCampos.HabilitarCampos(btnNovo);
+            limpar.LimparCampos(inputNome, inputLogin, inputSenha);
         }
 
         private void inputPesquisarFuncionario_TextChanged(object sender, EventArgs e)
@@ -187,13 +184,20 @@ namespace Livraria
                 dgvRetornoPesquisa.DataSource = null;
             }
         }
-
         private void dgvRetornoPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CarregarFuncionario();
 
-            if (radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnRemover);
-            else gerenciarCampos.DesabilitarCampos(btnRemover);
+            if (radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnDesativar);
+            else gerenciarCampos.DesabilitarCampos(btnDesativar);
+        }
+        private void labelSenha_MouseDown(object sender, MouseEventArgs e)
+        {
+            inputSenha.UseSystemPasswordChar = false;
+        }
+        private void labelSenha_MouseUp(object sender, MouseEventArgs e)
+        {
+            inputSenha.UseSystemPasswordChar = true;
         }
 
         private void CarregarFuncionario()
@@ -210,36 +214,24 @@ namespace Livraria
             gerenciarCampos.DesabilitarCampos(btnSalvar);
             gerenciarCampos.HabilitarCampos(
                 inputNome, inputLogin, inputSenha, inputCodigoDB,
-                btnAlterar, btnRemover, btnCancelar,
+                btnAlterar, btnDesativar, btnCancelar,
                 labelNome, labelLogin, labelSenha, labelCodigo
             );
 
             labelCodigo.Visible = true;
             inputCodigoDB.Visible = true;
         }
-
         private void Cancelar()
         {
             gerenciarCampos.DesabilitarCampos(
                 inputNome, inputLogin, inputSenha,
                 labelNome, labelLogin, labelSenha,
-                btnSalvar, btnAlterar, btnRemover, btnCancelar);
+                btnSalvar, btnAlterar, btnDesativar, btnCancelar);
 
             gerenciarCampos.HabilitarCampos(btnNovo);
             limpar.LimparCampos(inputNome, inputLogin, inputSenha, inputCodigoDB);
             radioBtnAtivo.Checked = true;
         }
-
-        private void labelSenha_MouseDown(object sender, MouseEventArgs e)
-        {
-            inputSenha.UseSystemPasswordChar = false;
-        }
-
-        private void labelSenha_MouseUp(object sender, MouseEventArgs e)
-        {
-            inputSenha.UseSystemPasswordChar = true;
-        }
-
         private void AtualizarPesquisa()
         {
             inputPesquisarFuncionario_TextChanged(null!, null!);

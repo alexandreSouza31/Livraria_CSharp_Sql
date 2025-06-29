@@ -24,7 +24,7 @@ namespace Livraria.Dados
 
             ExecutarComando(sql, nome, login, senha, status, codigo);
         }
-        public void RemoverUsuarioAtivo(int codigo)
+        public void DesativarUsuario(int codigo)
         {
             string sql = "UPDATE tbl_funcionario SET ds_status=0 WHERE cd_funcionario=@cod";
 
