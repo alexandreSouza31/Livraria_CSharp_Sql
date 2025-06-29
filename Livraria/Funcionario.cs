@@ -131,6 +131,15 @@ namespace Livraria
                     int codigo = Convert.ToInt32(inputCodigoDB.Text);
                     gerenciarDados.DesativarUsuario(codigo);
                     MessageBox.Show("Funcionário desativado com sucesso!");
+                    gerenciarCampos.DesabilitarCampos(
+                        inputNome, inputLogin, inputSenha,
+                        labelNome, labelLogin, labelSenha, labelCodigo,
+                        btnSalvar, btnAlterar, btnDesativar, btnCancelar);
+
+                    gerenciarCampos.HabilitarCampos(btnNovo);
+                    limpar.LimparCampos(inputNome, inputLogin, inputSenha,inputCodigoDB);
+                    radioBtnAtivo.Checked = true;
+                    radioBtnInativo.Checked = false;
                     AtualizarPesquisa();
 
                 }
