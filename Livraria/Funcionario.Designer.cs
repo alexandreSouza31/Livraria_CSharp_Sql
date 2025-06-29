@@ -303,6 +303,7 @@
             btnRemover.TabIndex = 18;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
+            btnRemover.Click += btnRemover_Click;
             // 
             // inputCodigoDB
             // 
@@ -352,7 +353,6 @@
             radioBtnInativo.TabStop = true;
             radioBtnInativo.Text = "Inativo";
             radioBtnInativo.UseVisualStyleBackColor = true;
-            radioBtnInativo.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // Funcionario
             // 

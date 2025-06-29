@@ -109,7 +109,7 @@ namespace Livraria
 
         private void btnSairApp_Click_1(object sender, EventArgs e)
         {
-            var resultado = DesejaSair.Confirmar();
+            var resultado = DesejaManipular.ConfirmarAcao("Sair");
 
             if (resultado == DialogResult.Yes)
             {

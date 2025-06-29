@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Livraria
 {
@@ -25,6 +26,7 @@ namespace Livraria
                 inputNome, inputLogin, inputSenha,
                 labelNome, labelLogin, labelSenha,
                 btnSalvar, btnAlterar, btnRemover, btnCancelar);
+
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -59,15 +61,18 @@ namespace Livraria
                 new string[] { "Nome", "Login", "Senha" }
             );
 
+            bool status = radioBtnAtivo.Checked;
+
             if (!validarInput) return;
 
             try
             {
-                gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text);
+                gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text,status);
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
                 limpar.LimparCampos(inputNome, inputLogin, inputSenha);
                 radioBtnAtivo.Checked = true;
                 inputNome.Focus();
+                AtualizarPesquisa();
             }
             catch (Exception erro)
             {
@@ -98,14 +103,13 @@ namespace Livraria
             try
             {
                 int codigo = Convert.ToInt32(inputCodigoDB.Text);
-                gerenciarDados.Editar(codigo, inputNome.Text, inputLogin.Text, inputSenha.Text);
+                gerenciarDados.Editar(codigo, inputNome.Text, inputLogin.Text, inputSenha.Text, radioBtnAtivo.Checked);
                 MessageBox.Show("Funcionário editado com sucesso!");
-                limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+                limpar.LimparCampos(inputNome, inputLogin, inputSenha,inputCodigoDB,inputPesquisarFuncionario);
                 radioBtnAtivo.Checked = true;
-                inputCodigoDB.Text = "";
-                inputPesquisarFuncionario.Text = "";
                 gerenciarCampos.HabilitarCampos(btnNovo);
                 gerenciarCampos.DesabilitarCampos(btnAlterar);
+                AtualizarPesquisa();
             }
             catch (Exception erro)
             {
@@ -114,6 +118,38 @@ namespace Livraria
             finally
             {
                 cn.Close();
+            }
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            var validarInput = Validar.ValidarCampos(
+                new TextBox[] { inputNome, inputLogin, inputSenha },
+                new string[] { "Nome", "Login", "Senha" }
+            );
+
+            if (!validarInput) return;
+            if (radioBtnAtivo.Checked)
+            {
+                MessageBox.Show($"O botão Status deve estar Inativo para Excluir!", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var desejaExcluir = DesejaManipular.ConfirmarAcao("Excluir");
+
+                if (desejaExcluir == DialogResult.No) return;
+
+                try
+                {
+                    int codigo = Convert.ToInt32(inputCodigoDB.Text);
+                    gerenciarDados.RemoverUsuarioAtivo(codigo);
+                    AtualizarPesquisa();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show(erro.Message, "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -156,7 +192,7 @@ namespace Livraria
         {
             CarregarFuncionario();
 
-            if(radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnRemover);
+            if (radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnRemover);
             else gerenciarCampos.DesabilitarCampos(btnRemover);
         }
 
@@ -166,16 +202,17 @@ namespace Livraria
             inputLogin.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[1].Value.ToString();
             inputSenha.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[2].Value.ToString();
             inputNome.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[3].Value.ToString();
-            string radioButtonAtivo = dgvRetornoPesquisa.SelectedRows[0].Cells[4].Value.ToString()!;
 
-            if (radioButtonAtivo == "True") radioBtnAtivo.Checked = true;
-            else radioBtnInativo.Checked = true;
+            bool btnAtivo = Convert.ToBoolean(dgvRetornoPesquisa.SelectedRows[0].Cells[4].Value);
+            radioBtnAtivo.Checked = btnAtivo;
+            radioBtnInativo.Checked = !btnAtivo;
 
-                gerenciarCampos.DesabilitarCampos(btnSalvar);
-                gerenciarCampos.HabilitarCampos(
-                    inputNome, inputLogin, inputSenha, inputCodigoDB,
-                    btnAlterar, btnRemover, btnCancelar,
-                    labelNome, labelLogin, labelSenha, labelCodigo);
+            gerenciarCampos.DesabilitarCampos(btnSalvar);
+            gerenciarCampos.HabilitarCampos(
+                inputNome, inputLogin, inputSenha, inputCodigoDB,
+                btnAlterar, btnRemover, btnCancelar,
+                labelNome, labelLogin, labelSenha, labelCodigo
+            );
 
             labelCodigo.Visible = true;
             inputCodigoDB.Visible = true;
@@ -189,9 +226,8 @@ namespace Livraria
                 btnSalvar, btnAlterar, btnRemover, btnCancelar);
 
             gerenciarCampos.HabilitarCampos(btnNovo);
-            limpar.LimparCampos(inputNome, inputLogin, inputSenha);
+            limpar.LimparCampos(inputNome, inputLogin, inputSenha, inputCodigoDB);
             radioBtnAtivo.Checked = true;
-            inputCodigoDB.Text = "";
         }
 
         private void labelSenha_MouseDown(object sender, MouseEventArgs e)
@@ -204,9 +240,9 @@ namespace Livraria
             inputSenha.UseSystemPasswordChar = true;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void AtualizarPesquisa()
         {
-
+            inputPesquisarFuncionario_TextChanged(null!, null!);
         }
     }
 }
