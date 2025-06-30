@@ -72,7 +72,7 @@
             labelCodigo.AutoSize = true;
             labelCodigo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelCodigo.ForeColor = SystemColors.Desktop;
-            labelCodigo.Location = new Point(98, 169);
+            labelCodigo.Location = new Point(60, 169);
             labelCodigo.Name = "labelCodigo";
             labelCodigo.Size = new Size(79, 25);
             labelCodigo.TabIndex = 1;
@@ -84,7 +84,7 @@
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelLogin.ForeColor = SystemColors.Desktop;
-            labelLogin.Location = new Point(98, 249);
+            labelLogin.Location = new Point(60, 249);
             labelLogin.Name = "labelLogin";
             labelLogin.Size = new Size(66, 25);
             labelLogin.TabIndex = 2;
@@ -95,7 +95,7 @@
             labelNome.AutoSize = true;
             labelNome.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelNome.ForeColor = SystemColors.Desktop;
-            labelNome.Location = new Point(98, 209);
+            labelNome.Location = new Point(60, 209);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(70, 25);
             labelNome.TabIndex = 3;
@@ -105,7 +105,7 @@
             // 
             inputNome.BorderStyle = BorderStyle.None;
             inputNome.Font = new Font("Segoe UI", 14F);
-            inputNome.Location = new Point(178, 206);
+            inputNome.Location = new Point(140, 206);
             inputNome.MaxLength = 60;
             inputNome.Name = "inputNome";
             inputNome.Size = new Size(411, 25);
@@ -115,7 +115,7 @@
             // 
             inputLogin.BorderStyle = BorderStyle.None;
             inputLogin.Font = new Font("Segoe UI", 14F, FontStyle.Underline);
-            inputLogin.Location = new Point(178, 246);
+            inputLogin.Location = new Point(140, 246);
             inputLogin.MaxLength = 20;
             inputLogin.Name = "inputLogin";
             inputLogin.Size = new Size(239, 25);
@@ -125,7 +125,7 @@
             // 
             inputSenha.BorderStyle = BorderStyle.None;
             inputSenha.Font = new Font("Segoe UI", 14F, FontStyle.Underline);
-            inputSenha.Location = new Point(178, 286);
+            inputSenha.Location = new Point(140, 286);
             inputSenha.MaxLength = 8;
             inputSenha.Name = "inputSenha";
             inputSenha.Size = new Size(239, 25);
@@ -138,7 +138,7 @@
             labelSenha.Cursor = Cursors.Hand;
             labelSenha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelSenha.ForeColor = SystemColors.Desktop;
-            labelSenha.Location = new Point(98, 289);
+            labelSenha.Location = new Point(60, 289);
             labelSenha.Name = "labelSenha";
             labelSenha.Size = new Size(70, 25);
             labelSenha.TabIndex = 6;
@@ -152,7 +152,7 @@
             textBox4.BorderStyle = BorderStyle.None;
             textBox4.Font = new Font("Segoe UI", 1F);
             textBox4.ForeColor = SystemColors.ScrollBar;
-            textBox4.Location = new Point(178, 229);
+            textBox4.Location = new Point(140, 229);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(411, 2);
             textBox4.TabIndex = 8;
@@ -163,7 +163,7 @@
             textBox5.BorderStyle = BorderStyle.None;
             textBox5.Font = new Font("Segoe UI", 1F);
             textBox5.ForeColor = SystemColors.ScrollBar;
-            textBox5.Location = new Point(178, 310);
+            textBox5.Location = new Point(140, 310);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(239, 2);
             textBox5.TabIndex = 9;
@@ -174,7 +174,7 @@
             textBox6.BorderStyle = BorderStyle.None;
             textBox6.Font = new Font("Segoe UI", 1F);
             textBox6.ForeColor = SystemColors.ScrollBar;
-            textBox6.Location = new Point(178, 271);
+            textBox6.Location = new Point(140, 271);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(239, 2);
             textBox6.TabIndex = 10;
@@ -183,7 +183,7 @@
             // 
             dgvRetornoPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRetornoPesquisa.GridColor = SystemColors.Highlight;
-            dgvRetornoPesquisa.Location = new Point(98, 438);
+            dgvRetornoPesquisa.Location = new Point(60, 438);
             dgvRetornoPesquisa.MultiSelect = false;
             dgvRetornoPesquisa.Name = "dgvRetornoPesquisa";
             dgvRetornoPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -196,7 +196,7 @@
             groupBoxPesquisarFuncionario.Controls.Add(textBox2);
             groupBoxPesquisarFuncionario.Controls.Add(inputPesquisarFuncionario);
             groupBoxPesquisarFuncionario.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            groupBoxPesquisarFuncionario.Location = new Point(98, 362);
+            groupBoxPesquisarFuncionario.Location = new Point(60, 362);
             groupBoxPesquisarFuncionario.Name = "groupBoxPesquisarFuncionario";
             groupBoxPesquisarFuncionario.Size = new Size(491, 66);
             groupBoxPesquisarFuncionario.TabIndex = 13;
@@ -233,7 +233,7 @@
             btnNovo.FlatStyle = FlatStyle.Flat;
             btnNovo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnNovo.ForeColor = SystemColors.Highlight;
-            btnNovo.Location = new Point(646, 175);
+            btnNovo.Location = new Point(690, 175);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(100, 55);
             btnNovo.TabIndex = 14;
@@ -249,7 +249,7 @@
             btnAlterar.FlatStyle = FlatStyle.Flat;
             btnAlterar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnAlterar.ForeColor = SystemColors.Highlight;
-            btnAlterar.Location = new Point(646, 345);
+            btnAlterar.Location = new Point(690, 345);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(100, 55);
             btnAlterar.TabIndex = 15;
@@ -265,7 +265,7 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnSalvar.ForeColor = SystemColors.Highlight;
-            btnSalvar.Location = new Point(646, 260);
+            btnSalvar.Location = new Point(690, 260);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(100, 55);
             btnSalvar.TabIndex = 16;
@@ -281,7 +281,7 @@
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnCancelar.ForeColor = SystemColors.Highlight;
-            btnCancelar.Location = new Point(646, 515);
+            btnCancelar.Location = new Point(690, 515);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(100, 55);
             btnCancelar.TabIndex = 17;
@@ -297,7 +297,7 @@
             btnDesativar.FlatStyle = FlatStyle.Flat;
             btnDesativar.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             btnDesativar.ForeColor = SystemColors.Highlight;
-            btnDesativar.Location = new Point(646, 430);
+            btnDesativar.Location = new Point(690, 430);
             btnDesativar.Name = "btnDesativar";
             btnDesativar.Size = new Size(100, 55);
             btnDesativar.TabIndex = 18;
@@ -310,7 +310,7 @@
             inputCodigoDB.AutoSize = true;
             inputCodigoDB.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             inputCodigoDB.ForeColor = SystemColors.Highlight;
-            inputCodigoDB.Location = new Point(178, 169);
+            inputCodigoDB.Location = new Point(140, 169);
             inputCodigoDB.Name = "inputCodigoDB";
             inputCodigoDB.Size = new Size(17, 25);
             inputCodigoDB.TabIndex = 19;
@@ -323,7 +323,7 @@
             labelStatus.Cursor = Cursors.Hand;
             labelStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelStatus.ForeColor = SystemColors.Desktop;
-            labelStatus.Location = new Point(231, 169);
+            labelStatus.Location = new Point(193, 169);
             labelStatus.Name = "labelStatus";
             labelStatus.Size = new Size(71, 25);
             labelStatus.TabIndex = 20;
@@ -334,25 +334,27 @@
             radioBtnAtivo.AutoSize = true;
             radioBtnAtivo.Checked = true;
             radioBtnAtivo.Font = new Font("Segoe UI", 10F);
-            radioBtnAtivo.Location = new Point(308, 172);
+            radioBtnAtivo.Location = new Point(270, 172);
             radioBtnAtivo.Name = "radioBtnAtivo";
             radioBtnAtivo.Size = new Size(59, 23);
             radioBtnAtivo.TabIndex = 21;
             radioBtnAtivo.TabStop = true;
             radioBtnAtivo.Text = "Ativo";
             radioBtnAtivo.UseVisualStyleBackColor = true;
+            radioBtnAtivo.CheckedChanged += radioBtnAtivo_CheckedChanged;
             // 
             // radioBtnInativo
             // 
             radioBtnInativo.AutoSize = true;
             radioBtnInativo.Font = new Font("Segoe UI", 10F);
-            radioBtnInativo.Location = new Point(373, 172);
+            radioBtnInativo.Location = new Point(335, 172);
             radioBtnInativo.Name = "radioBtnInativo";
             radioBtnInativo.Size = new Size(69, 23);
             radioBtnInativo.TabIndex = 22;
             radioBtnInativo.TabStop = true;
             radioBtnInativo.Text = "Inativo";
             radioBtnInativo.UseVisualStyleBackColor = true;
+            radioBtnInativo.CheckedChanged += radioBtnInativo_CheckedChanged;
             // 
             // Funcionario
             // 

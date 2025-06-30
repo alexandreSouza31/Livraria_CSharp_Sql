@@ -1,69 +1,61 @@
-﻿using Microsoft.Data.SqlClient;
-using System.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using MySql.Data.MySqlClient;
 
 namespace Livraria.Dados
 {
     class GerenciarDados
     {
-        private readonly SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
-        private readonly SqlCommand cm = new SqlCommand();
+        private readonly Conexao conexao = new Conexao();
 
         public void Cadastrar(string nome, string login, string senha, bool status)
         {
             string sql = "INSERT INTO tbl_funcionario (nm_funcionario, ds_login, ds_senha, ds_status) VALUES (@nome, @login, @senha, @status)";
-            cm.Parameters.Clear();
             ExecutarComando(sql, nome, login, senha, status);
         }
 
         public void Editar(int codigo, string nome, string login, string senha, bool status)
         {
-            string sql = "UPDATE tbl_funcionario SET nm_funcionario=@nome, ds_login=@login, ds_senha=@senha, ds_status=@status WHERE cd_funcionario=@cod";
-            cm.Parameters.Clear();
-            cm.Parameters.Add("@cod", SqlDbType.Int).Value = codigo;
-
+            string sql = @"UPDATE tbl_funcionario 
+                           SET nm_funcionario = @nome, ds_login = @login, ds_senha = @senha, ds_status = @status 
+                           WHERE cd_funcionario = @cod";
             ExecutarComando(sql, nome, login, senha, status, codigo);
         }
+
         public void DesativarUsuario(int codigo)
         {
-            string sql = "UPDATE tbl_funcionario SET ds_status=0 WHERE cd_funcionario=@cod";
-
-            cm.Parameters.Clear();
-            cm.Parameters.Add("@cod", SqlDbType.Int).Value = codigo;
+            string sql = "UPDATE tbl_funcionario SET ds_status = 0 WHERE cd_funcionario = @cod";
             ExecutarComando(sql, codigo: codigo);
         }
 
         private void ExecutarComando(string sql, string nome = null, string login = null, string senha = null, bool? status = null, int? codigo = null)
         {
-            cm.Parameters.Clear();
+            var cmd = conexao.Comando();
+            cmd.CommandText = sql;
+            cmd.Parameters.Clear();
 
             if (sql.Contains("@nome") && nome != null)
-                cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
 
             if (sql.Contains("@login") && login != null)
-                cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
+                cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = login;
 
             if (sql.Contains("@senha") && senha != null)
-                cm.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+                cmd.Parameters.Add("@senha", MySqlDbType.String).Value = senha;
 
             if (sql.Contains("@status") && status.HasValue)
-                cm.Parameters.Add("@status", SqlDbType.Bit).Value = status.Value;
+                cmd.Parameters.Add("@status", MySqlDbType.Bit).Value = status.Value;
 
             if (sql.Contains("@cod") && codigo.HasValue)
-                cm.Parameters.Add("@cod", SqlDbType.Int).Value = codigo.Value;
-
-            cm.CommandText = sql;
-            cm.Connection = cn;
+                cmd.Parameters.Add("@cod", MySqlDbType.Int32).Value = codigo.Value;
 
             try
             {
-                cn.Open();
-                cm.ExecuteNonQuery();
+                conexao.AbrirConexao();
+                cmd.ExecuteNonQuery();
             }
             finally
             {
-                cm.Parameters.Clear();
-                cn.Close();
+                cmd.Parameters.Clear();
+                conexao.FecharConexao();
             }
         }
     }

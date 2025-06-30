@@ -1,9 +1,10 @@
 ﻿using Livraria.Dados;
 using Livraria.Utils;
-using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static Azure.Core.HttpHeader;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Livraria
@@ -14,9 +15,7 @@ namespace Livraria
         private readonly ConfigurarCor aplicarCor = new ConfigurarCor();
         private readonly GerenciarCampos gerenciarCampos = new GerenciarCampos();
         private readonly GerenciarDados gerenciarDados = new GerenciarDados();
-
-        private readonly SqlConnection cn = new SqlConnection(@"Data Source=ALIENWARE-17-R4\SQLEXPRESS;Initial Catalog=db_Livraria;Integrated Security=SSPI;Encrypt=False;TrustServerCertificate=True");
-        private readonly SqlCommand cm = new SqlCommand();
+        private readonly Conexao conexao = new Conexao();
 
         public Funcionario()
         {
@@ -62,7 +61,7 @@ namespace Livraria
 
             try
             {
-                gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text,status);
+                gerenciarDados.Cadastrar(inputNome.Text, inputLogin.Text, inputSenha.Text, status);
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
                 limpar.LimparCampos(inputNome, inputLogin, inputSenha);
                 radioBtnAtivo.Checked = true;
@@ -75,7 +74,7 @@ namespace Livraria
             }
             finally
             {
-                cn.Close();
+                conexao.FecharConexao();
             }
         }
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -94,18 +93,14 @@ namespace Livraria
 
             if (!validarInput) return;
 
-            if (radioBtnInativo.Checked) 
-            {
-                MessageBox.Show($"Para tornar funcionário inativo utilize o botão 'Desativar'!", "Atenção!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            if (radioBtnInativo.Checked) gerenciarCampos.DesabilitarCampos(btnAlterar);
 
             try
             {
                 int codigo = Convert.ToInt32(inputCodigoDB.Text);
                 gerenciarDados.Editar(codigo, inputNome.Text, inputLogin.Text, inputSenha.Text, radioBtnAtivo.Checked);
                 MessageBox.Show("Funcionário editado com sucesso!");
-                limpar.LimparCampos(inputNome, inputLogin, inputSenha,inputCodigoDB,inputPesquisarFuncionario);
+                limpar.LimparCampos(inputNome, inputLogin, inputSenha, inputCodigoDB, inputPesquisarFuncionario);
                 radioBtnAtivo.Checked = true;
                 gerenciarCampos.HabilitarCampos(btnNovo);
                 gerenciarCampos.DesabilitarCampos(btnAlterar);
@@ -117,7 +112,7 @@ namespace Livraria
             }
             finally
             {
-                cn.Close();
+                conexao.FecharConexao();
             }
         }
         private void btnDesativar_Click(object sender, EventArgs e)
@@ -128,10 +123,9 @@ namespace Livraria
             );
 
             if (!validarInput) return;
-            if (radioBtnAtivo.Checked)
-            {
-                MessageBox.Show($"O botão Status deve estar Inativo para Desativar!", "Erro ao Desativar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            if (radioBtnAtivo.Checked) gerenciarCampos.DesabilitarCampos(btnDesativar);
+
             else
             {
                 var desejaDesativar = DesejaManipular.ConfirmarAcao("Desativar");
@@ -149,7 +143,7 @@ namespace Livraria
                         btnSalvar, btnAlterar, btnDesativar, btnCancelar);
 
                     gerenciarCampos.HabilitarCampos(btnNovo);
-                    limpar.LimparCampos(inputNome, inputLogin, inputSenha,inputCodigoDB);
+                    limpar.LimparCampos(inputNome, inputLogin, inputSenha, inputCodigoDB);
                     radioBtnAtivo.Checked = true;
                     radioBtnInativo.Checked = false;
                     AtualizarPesquisa();
@@ -178,15 +172,16 @@ namespace Livraria
             {
                 try
                 {
-                    cn.Open();
+                    conexao.AbrirConexao();
 
                     string sql = "SELECT cd_funcionario, ds_login, nm_funcionario, ds_status FROM tbl_funcionario WHERE nm_funcionario LIKE @nome";
-                    cm.CommandText = sql;
-                    cm.Parameters.Clear();
-                    cm.Parameters.AddWithValue("@nome", $"%{inputPesquisarFuncionario.Text}%");
-                    cm.Connection = cn;
+                    var cmd = conexao.Comando();
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@nome", $"%{inputPesquisarFuncionario.Text}%");
+                    cmd.Connection = conexao.AbrirConexao();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cm);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
@@ -198,7 +193,7 @@ namespace Livraria
                 }
                 finally
                 {
-                    cn.Close();
+                    conexao.FecharConexao();
                 }
             }
             else
@@ -209,9 +204,6 @@ namespace Livraria
         private void dgvRetornoPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CarregarFuncionario();
-
-            if (radioBtnAtivo.Checked) gerenciarCampos.HabilitarCampos(btnDesativar);
-            else gerenciarCampos.DesabilitarCampos(btnDesativar);
         }
         private void labelSenha_MouseDown(object sender, MouseEventArgs e)
         {
@@ -224,21 +216,46 @@ namespace Livraria
 
         private void CarregarFuncionario()
         {
-            inputCodigoDB.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[0].Value.ToString();
-            inputLogin.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[1].Value.ToString();
-            inputSenha.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[2].Value.ToString();
-            inputNome.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[3].Value.ToString();
+            if (dgvRetornoPesquisa.SelectedRows.Count == 0) return;
 
-            bool btnAtivo = Convert.ToBoolean(dgvRetornoPesquisa.SelectedRows[0].Cells[4].Value);
+            try
+            {
+                inputCodigoDB.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[0].Value.ToString();
+                inputLogin.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[1].Value.ToString();
+                inputNome.Text = dgvRetornoPesquisa.SelectedRows[0].Cells[2].Value.ToString();
+                conexao.AbrirConexao();
+
+                int idFuncionario = int.Parse(inputCodigoDB.Text);
+
+                var cmd = conexao.Comando();
+                cmd.CommandText = "SELECT ds_senha FROM tbl_funcionario WHERE cd_funcionario = @cod";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@cod", idFuncionario);
+
+                var senha = cmd.ExecuteScalar()?.ToString();
+                inputSenha.Text = senha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar senha: " + ex.Message);
+            }
+            finally
+            {
+                conexao.FecharConexao();
+            }
+
+            bool btnAtivo = Convert.ToBoolean(dgvRetornoPesquisa.SelectedRows[0].Cells[3].Value);
             radioBtnAtivo.Checked = btnAtivo;
             radioBtnInativo.Checked = !btnAtivo;
 
             gerenciarCampos.DesabilitarCampos(btnSalvar);
             gerenciarCampos.HabilitarCampos(
                 inputNome, inputLogin, inputSenha, inputCodigoDB,
-                btnAlterar, btnDesativar, btnCancelar,
+                btnAlterar, btnCancelar,
                 labelNome, labelLogin, labelSenha, labelCodigo
             );
+
+            if(btnAtivo) gerenciarCampos.DesabilitarCampos(btnDesativar);
 
             labelCodigo.Visible = true;
             inputCodigoDB.Visible = true;
@@ -257,6 +274,21 @@ namespace Livraria
         private void AtualizarPesquisa()
         {
             inputPesquisarFuncionario_TextChanged(null!, null!);
+        }
+
+        private void radioBtnAtivo_CheckedChanged(object sender, EventArgs e)
+        {
+            gerenciarCampos.HabilitarCampos(btnAlterar);
+            gerenciarCampos.DesabilitarCampos(btnDesativar);
+        }
+
+        private void radioBtnInativo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (inputNome.Text != "")
+            {
+                gerenciarCampos.HabilitarCampos(btnDesativar);
+                gerenciarCampos.DesabilitarCampos(btnAlterar);
+            }
         }
     }
 }
